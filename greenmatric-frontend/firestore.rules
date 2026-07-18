@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() { return request.auth != null; }
+    function role() { return request.auth.token.role; }
+    function isAdmin() { return isSignedIn() && role() == 'admin'; }
+    function isStaff() { return isSignedIn() && (role() == 'admin' || role() == 'rep'); }
+
+    // Leads: public may CREATE only (validated); no public read.
+    // Staff read/update; admin delete. Prefer createLead server path in prod.
+    match /leads/{leadId} {
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.phone is string
+                    && request.resource.data.status == 'new';
+      allow read, update: if isStaff();
+      allow delete: if isAdmin();
+
+      // Append-only notes: staff create/read; never update or delete.
+      match /notes/{noteId} {
+        allow read, create: if isStaff();
+        allow update, delete: if false;
+      }
+    }
+
+    // Articles: public reads published; only admin writes.
+    match /articles/{articleId} {
+      allow read: if resource.data.status == 'published' || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Users: admin manages; a user may read own doc.
+    match /users/{uid} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == uid);
+      allow write: if isAdmin();
+    }
+  }
+}
