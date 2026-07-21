@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { Field } from "@/components/ui";
 import { submitLead } from "@/lib/leads";
+import { trackLead } from "@/lib/gtag";
+import { isValidLead } from "@/lib/validate";
 
 type QuoteContext = { product?: string; capacity?: string };
 type Ctx = { openQuote: (c?: QuoteContext) => void };
@@ -43,7 +45,7 @@ function QuoteModal({ open, onClose, preset }: { open: boolean; onClose: () => v
     if (fd.get("company_website")) return; // honeypot
     const name = String(fd.get("name") || "").trim();
     const phone = String(fd.get("phone") || "").trim();
-    if (!name || !/^[+\d][\d\s-]{7,}$/.test(phone)) {
+    if (!isValidLead(name, phone)) {
       setError("Enter a name and a valid phone number.");
       return;
     }
@@ -58,6 +60,7 @@ function QuoteModal({ open, onClose, preset }: { open: boolean; onClose: () => v
         message: String(fd.get("message") || ""),
         sourcePage: pathname || "/",
       });
+      trackLead(preset.product || "quote_modal");
       setDone(true);
     } catch {
       setError("Something went wrong. Please call us instead.");

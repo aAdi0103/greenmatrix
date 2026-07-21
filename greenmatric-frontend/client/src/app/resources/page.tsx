@@ -1,18 +1,18 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import { Container, Section, Card } from "@/components/ui";
 import { PageHero } from "@/components/PageHero";
-import { listPublished } from "@/lib/articles";
-import type { Article } from "@/lib/types";
+import { listPublished } from "@/lib/articlesServer";
 
-export default function ResourcesPage() {
-  const [articles, setArticles] = useState<Article[] | null>(null);
+export const revalidate = 60; // ISR — reflects new publishes within a minute
 
-  useEffect(() => {
-    listPublished().then(setArticles).catch(() => setArticles([]));
-  }, []);
+export const metadata: Metadata = {
+  title: "Resources",
+  description: "Cost, licence and capacity guides for starting a water or beverage bottling business.",
+};
+
+export default async function ResourcesPage() {
+  const articles = await listPublished();
 
   return (
     <>
@@ -20,9 +20,7 @@ export default function ResourcesPage() {
         subtitle="Cost, licence and capacity guides for entrepreneurs entering the water and beverage business." />
       <Section>
         <Container>
-          {articles === null ? (
-            <p className="text-mist">Loading…</p>
-          ) : articles.length === 0 ? (
+          {articles.length === 0 ? (
             <div className="rounded-2xl border border-white/10 bg-ink-2/40 p-10 text-center text-mist">
               No articles published yet. Check back soon.
             </div>

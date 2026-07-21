@@ -12,7 +12,7 @@ import type { Article } from "@/lib/types";
 import { Card, Button, Field, Spinner } from "@/components/ui";
 import { Editor } from "@/components/Editor";
 
-const CLIENT_URL = "http://localhost:3000";
+const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL ?? "http://localhost:3000";
 
 export default function ArticleEditor({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);

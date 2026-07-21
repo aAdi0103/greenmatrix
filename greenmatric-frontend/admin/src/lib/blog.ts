@@ -6,9 +6,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import type { Article } from "./types";
 
-export function slugify(s: string) {
-  return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-}
+export { slugify } from "./text";
 
 export function subscribeArticles(cb: (a: Article[]) => void) {
   const q = query(collection(db, "articles"), orderBy("updatedAt", "desc"));

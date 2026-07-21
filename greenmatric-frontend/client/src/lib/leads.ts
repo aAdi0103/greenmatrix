@@ -1,6 +1,4 @@
-import { db } from "./firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import type { Lead, LeadSource } from "./types";
+import type { LeadSource } from "./types";
 
 export type LeadInput = {
   name: string;
@@ -14,30 +12,15 @@ export type LeadInput = {
   message?: string;
   source?: LeadSource;
   sourcePage: string;
+  company_website?: string; // honeypot
 };
 
-// Writes a lead to Firestore (status=new). Public create is allowed by security rules.
-// ponytail: direct client write for now; a rate-limited server route wraps this in M4.
+// Posts to the server route (the only write path into `leads`). Rules deny client writes.
 export async function submitLead(input: LeadInput): Promise<void> {
-  const doc: Lead = {
-    name: input.name.trim(),
-    phone: input.phone.trim(),
-    email: input.email?.trim() || undefined,
-    company: input.company?.trim() || undefined,
-    city: input.city?.trim() || undefined,
-    state: input.state?.trim() || undefined,
-    productInterest: input.productInterest || undefined,
-    capacity: input.capacity || undefined,
-    message: input.message?.trim() || undefined,
-    source: input.source ?? "web_form",
-    sourcePage: input.sourcePage,
-    status: "new",
-  };
-  // Drop undefined keys (Firestore rejects them).
-  const clean = Object.fromEntries(Object.entries(doc).filter(([, v]) => v !== undefined));
-  await addDoc(collection(db, "leads"), {
-    ...clean,
-    createdAt: serverTimestamp(),
-    updatedAt: serverTimestamp(),
+  const res = await fetch("/api/lead", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(input),
   });
+  if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "failed");
 }

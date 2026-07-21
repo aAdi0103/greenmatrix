@@ -1,0 +1,14 @@
+# Netlify site for the private admin app.
+# In Netlify: set Base directory = greenmatric-frontend/admin
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Admin must never be indexed (also enforced by robots meta in layout).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

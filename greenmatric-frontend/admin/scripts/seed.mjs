@@ -1,12 +1,35 @@
 // Seed the Firebase emulator with demo data.
 // Run: node greenmatric-frontend/seed.sh  (wrapper sets emulator env)
-import { initializeApp } from "firebase-admin/app";
+import { initializeApp, cert } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
+import { readdirSync } from "node:fs";
 
-const app = initializeApp({ projectId: process.env.GCLOUD_PROJECT || "greenmatrix-demo" });
+const bucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "greenmatrix-demo.appspot.com";
+const sa = process.env.FIREBASE_SERVICE_ACCOUNT;
+const app = initializeApp({
+  projectId: process.env.GCLOUD_PROJECT || "greenmatrix-demo",
+  storageBucket: bucketName,
+  ...(sa ? { credential: cert(JSON.parse(sa)) } : {}),
+});
 const auth = getAuth(app);
 const db = getFirestore(app);
+const bucket = getStorage(app).bucket();
+
+async function uploadProductImages() {
+  const dir = new URL("../../seed/assets/products/", import.meta.url);
+  let files = [];
+  try { files = readdirSync(dir).filter((f) => f.endsWith(".jpg")); } catch { return 0; }
+  for (const f of files) {
+    const slug = f.replace(/\.jpg$/, "");
+    await bucket.upload(new URL(f, dir).pathname, {
+      destination: `products/${slug}/main.jpg`,
+      metadata: { contentType: "image/jpeg" },
+    });
+  }
+  return files.length;
+}
 
 const today = new Date().toISOString().slice(0, 10);
 const daysAgo = (n) => new Date(Date.now() - n * 864e5);
@@ -68,7 +91,8 @@ async function main() {
     updatedAt: daysAgo(1),
   });
 
-  console.log("✅ Seeded: 2 users, 6 leads, 2 articles");
+  const imgs = await uploadProductImages();
+  console.log(`✅ Seeded: 2 users, 6 leads, 2 articles, ${imgs} product images`);
   process.exit(0);
 }
 

@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PRODUCTS, getProduct } from "@/content/products";
-import { ASSETS } from "@/content/site";
 import { Container } from "@/components/ui";
 import { EnquireButton } from "@/components/EnquireButton";
+import { storageUrl } from "@/lib/storage";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -23,11 +22,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const p = getProduct(slug);
   if (!p) notFound();
 
-  const poster = p.images[0] ?? ASSETS.hero; // Storage image when available; demo poster fallback
+  const poster = storageUrl(p.images[0] ?? `products/${p.slug}/main.jpg`); // machine photo from Storage
   const related = (p.pairsWith ?? []).map(getProduct).filter(Boolean);
+
+  const productLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    description: p.valueLine,
+    image: poster,
+    category: p.stage,
+    brand: { "@type": "Brand", name: "Greenmatrix" },
+  };
 
   return (
     <div className="pt-24 pb-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
       <Container>
         <nav className="text-sm text-mist"><Link href="/products" className="hover:text-white">Products</Link> <span className="mx-1">/</span> <span className="text-white/80">{p.name}</span></nav>
 
@@ -39,10 +49,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-4 text-lg text-mist">{p.valueLine}</p>
 
             <div className="mt-8 relative rounded-2xl overflow-hidden border border-white/10 glow-brand">
-              <Image src={poster} alt={p.name} width={900} height={560} className="w-full h-auto object-cover" />
-              {p.images.length === 0 && (
-                <span className="absolute bottom-3 left-3 rounded bg-ink/70 px-2 py-1 text-[11px] text-mist">Representative image — machine photo loads from Storage</span>
-              )}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={poster} alt={p.name} className="w-full h-auto object-cover" />
             </div>
 
             <section className="mt-10">

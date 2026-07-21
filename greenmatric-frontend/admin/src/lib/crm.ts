@@ -30,24 +30,5 @@ export async function addNote(id: string, text: string, authorUid: string, autho
   });
 }
 
-export function todayISO() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-// Firestore Timestamp | undefined -> Date | null
-export function toDate(ts: unknown): Date | null {
-  if (ts && typeof ts === "object" && "toDate" in ts) return (ts as { toDate: () => Date }).toDate();
-  return null;
-}
-
-export function leadsToCsv(leads: Lead[]): string {
-  const cols = ["createdAt", "name", "phone", "email", "city", "state", "productInterest", "capacity", "status", "source", "sourcePage", "assignedTo", "dealValue"];
-  const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const rows = leads.map((l) =>
-    cols.map((c) => {
-      if (c === "createdAt") return esc(toDate(l.createdAt)?.toISOString() ?? "");
-      return esc(l[c as keyof Lead]);
-    }).join(","),
-  );
-  return [cols.join(","), ...rows].join("\n");
-}
+export { toDate, todayISO } from "./dates";
+export { leadsToCsv } from "./csv";

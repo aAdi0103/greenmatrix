@@ -5,4 +5,5 @@ cd "$(dirname "$0")/admin"
 export GCLOUD_PROJECT=greenmatrix-demo
 export FIREBASE_AUTH_EMULATOR_HOST=127.0.0.1:9099
 export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+export FIREBASE_STORAGE_EMULATOR_HOST=127.0.0.1:9199
 node scripts/seed.mjs
