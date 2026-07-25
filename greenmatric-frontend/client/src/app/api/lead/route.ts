@@ -1,13 +1,11 @@
 import { NextResponse } from "next/server";
-import { FieldValue } from "firebase-admin/firestore";
-import { adminDb } from "@/lib/firebaseAdmin";
+import { supabaseService } from "@/lib/supabaseServer";
 import { isValidLead } from "@/lib/validate";
 
-// The only write path into `leads`. Firestore rules deny client creates.
-// ponytail: in-memory per-IP rate limit — fine for one instance; swap for a shared
-// store (Upstash/Firestore counter) if we scale to multiple serverless instances.
+// The only write path into `leads`. RLS denies anon inserts; the service key bypasses RLS.
+// ponytail: in-memory per-IP rate limit — fine for one instance; swap for a shared store if scaled.
 const hits = new Map<string, number[]>();
-const WINDOW = 10 * 60_000; // 10 min
+const WINDOW = 10 * 60_000;
 const MAX = 5;
 
 function rateLimited(ip: string): boolean {
@@ -24,32 +22,28 @@ export async function POST(req: Request) {
     if (rateLimited(ip)) return NextResponse.json({ error: "rate_limited" }, { status: 429 });
 
     const b = await req.json();
-    if (b.company_website) return NextResponse.json({ ok: true }); // honeypot — pretend success
+    if (b.company_website) return NextResponse.json({ ok: true }); // honeypot
 
     const name = String(b.name ?? "").trim();
     const phone = String(b.phone ?? "").trim();
-    if (!isValidLead(name, phone)) {
-      return NextResponse.json({ error: "invalid" }, { status: 400 });
-    }
+    if (!isValidLead(name, phone)) return NextResponse.json({ error: "invalid" }, { status: 400 });
 
-    const doc: Record<string, unknown> = {
+    const row = {
       name, phone,
       email: b.email?.trim() || null,
       company: b.company?.trim() || null,
       city: b.city?.trim() || null,
       state: b.state?.trim() || null,
-      productInterest: b.productInterest || null,
+      product_interest: b.productInterest || null,
       capacity: b.capacity || null,
       message: b.message?.trim() || null,
       source: ["web_form", "whatsapp", "call_back", "manual"].includes(b.source) ? b.source : "web_form",
-      sourcePage: String(b.sourcePage ?? "/"),
+      source_page: String(b.sourcePage ?? "/"),
       status: "new",
-      createdAt: FieldValue.serverTimestamp(),
-      updatedAt: FieldValue.serverTimestamp(),
     };
-    for (const k of Object.keys(doc)) if (doc[k] === null) delete doc[k];
 
-    await adminDb.collection("leads").add(doc);
+    const { error } = await supabaseService.from("leads").insert(row);
+    if (error) throw error;
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "server_error" }, { status: 500 });

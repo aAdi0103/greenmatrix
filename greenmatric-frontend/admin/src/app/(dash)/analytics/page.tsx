@@ -83,7 +83,7 @@ export default function AnalyticsPage() {
       </div>
 
       <Card className="mt-6 p-5 text-sm text-slate-500">
-        Website traffic (GA4) embeds here in Phase 3, alongside these Firestore-computed metrics.
+        Website traffic (GA4) can embed here alongside these Supabase-computed metrics.
       </Card>
     </div>
   );

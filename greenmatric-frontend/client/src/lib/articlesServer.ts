@@ -1,7 +1,7 @@
 import "server-only";
-import { adminDb } from "./firebaseAdmin";
+import { supabaseAnon } from "./supabaseServer";
 
-// Server-side published-article reads (Admin SDK) for SSR/ISR + real SEO.
+// Server-side published-article reads for SSR/ISR + real SEO. RLS permits public read of published.
 export type PublicArticle = {
   id: string;
   title: string;
@@ -15,32 +15,30 @@ export type PublicArticle = {
   publishedAtISO?: string;
 };
 
-function toPublic(id: string, d: FirebaseFirestore.DocumentData): PublicArticle {
-  const pub = d.publishedAt?.toDate?.() as Date | undefined;
+type Row = Record<string, unknown>;
+function toPublic(r: Row): PublicArticle {
   return {
-    id,
-    title: d.title ?? "",
-    slug: d.slug ?? "",
-    excerpt: d.excerpt ?? "",
-    coverImage: d.coverImage ?? "",
-    body: d.body ?? "",
-    tags: d.tags ?? [],
-    seoTitle: d.seoTitle ?? "",
-    seoMeta: d.seoMeta ?? "",
-    publishedAtISO: pub ? pub.toISOString() : undefined,
+    id: r.id as string,
+    title: (r.title as string) ?? "",
+    slug: (r.slug as string) ?? "",
+    excerpt: (r.excerpt as string) ?? "",
+    coverImage: (r.cover_image as string) ?? "",
+    body: (r.body as string) ?? "",
+    tags: (r.tags as string[]) ?? [],
+    seoTitle: (r.seo_title as string) ?? "",
+    seoMeta: (r.seo_meta as string) ?? "",
+    publishedAtISO: (r.published_at as string) ?? undefined,
   };
 }
 
-// Errors (e.g. DB unreachable at build) degrade to empty so builds never fail; ISR fills later.
+// Errors degrade to empty so builds never fail; ISR fills later.
 export async function listPublished(): Promise<PublicArticle[]> {
   try {
-    const snap = await adminDb
-      .collection("articles")
-      .where("status", "==", "published")
-      .orderBy("publishedAt", "desc")
-      .limit(50)
-      .get();
-    return snap.docs.map((d) => toPublic(d.id, d.data()));
+    const { data, error } = await supabaseAnon
+      .from("articles").select("*").eq("status", "published")
+      .order("published_at", { ascending: false }).limit(50);
+    if (error) throw error;
+    return (data ?? []).map(toPublic);
   } catch {
     return [];
   }
@@ -48,15 +46,10 @@ export async function listPublished(): Promise<PublicArticle[]> {
 
 export async function getPublishedBySlug(slug: string): Promise<PublicArticle | null> {
   try {
-    const snap = await adminDb
-      .collection("articles")
-      .where("slug", "==", slug)
-      .where("status", "==", "published")
-      .limit(1)
-      .get();
-    if (snap.empty) return null;
-    const d = snap.docs[0];
-    return toPublic(d.id, d.data());
+    const { data, error } = await supabaseAnon
+      .from("articles").select("*").eq("slug", slug).eq("status", "published").maybeSingle();
+    if (error) throw error;
+    return data ? toPublic(data) : null;
   } catch {
     return null;
   }

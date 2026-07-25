@@ -21,7 +21,7 @@ export default function SettingsPage() {
           <input type="checkbox" checked={repSeesAll} onChange={(e) => setRepSeesAll(e.target.checked)} />
           Reps can see all leads
         </label>
-        <p className="mt-2 text-xs text-slate-400">Persisted to Firestore config + enforced in security rules in Phase 3.</p>
+        <p className="mt-2 text-xs text-slate-400">Persisted to a settings table + enforced in RLS (follow-up).</p>
       </Card>
 
       <Card className="mt-4 p-5">
@@ -31,8 +31,8 @@ export default function SettingsPage() {
       </Card>
 
       <Card className="mt-4 p-5">
-        <h2 className="font-semibold">Firebase</h2>
-        <p className="mt-1 text-sm text-slate-500">Currently running on the local emulator. Swap in the production project config in Phase 3.</p>
+        <h2 className="font-semibold">Backend</h2>
+        <p className="mt-1 text-sm text-slate-500">Running on Supabase — Postgres, Auth and Storage, with row-level security.</p>
       </Card>
     </div>
   );

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-# Seed the running emulator with demo users, leads and articles.
+# Seed / initialise the Supabase project with demo users, leads, articles and product images.
 set -e
 cd "$(dirname "$0")/admin"
-export GCLOUD_PROJECT=greenmatrix-demo
-export FIREBASE_AUTH_EMULATOR_HOST=127.0.0.1:9099
-export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
-export FIREBASE_STORAGE_EMULATOR_HOST=127.0.0.1:9199
+set -a; . ./.env.local; set +a   # export NEXT_PUBLIC_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY
 node scripts/seed.mjs

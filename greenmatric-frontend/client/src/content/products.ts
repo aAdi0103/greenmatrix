@@ -1,5 +1,5 @@
 // Static product catalogue (PRD Appendix A + brochure specs). 12 machines.
-// Images referenced by Firebase Storage path; demo falls back to a poster placeholder.
+// Images served from Supabase Storage (bucket "products", path "<slug>/main.jpg").
 
 export type Stage = "treatment" | "filling" | "labeling" | "packing" | "handling";
 
@@ -14,7 +14,7 @@ export type Product = {
   features: string[];
   specs: Spec[];
   industries: string[];
-  images: string[]; // Firebase Storage paths, e.g. "products/water-rfc/1.jpg"
+  images: string[]; // Storage paths, e.g. "products/water-rfc/main.jpg"
   pairsWith?: string[];
   seo: { title: string; description: string };
 };

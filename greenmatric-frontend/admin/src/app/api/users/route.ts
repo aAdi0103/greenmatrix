@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { adminAuth, adminDb, requireAdmin } from "@/lib/firebaseAdmin";
+import { supabaseAdmin, requireAdmin } from "@/lib/supabaseAdmin";
 
 function fail(e: unknown) {
   const m = e instanceof Error ? e.message : "error";
@@ -10,8 +10,9 @@ function fail(e: unknown) {
 export async function GET(req: Request) {
   try {
     await requireAdmin(req);
-    const snap = await adminDb.collection("users").get();
-    return NextResponse.json(snap.docs.map((d) => ({ uid: d.id, ...d.data() })));
+    const { data, error } = await supabaseAdmin.from("profiles").select("*").order("created_at");
+    if (error) throw error;
+    return NextResponse.json(data.map((r) => ({ uid: r.id, name: r.name, email: r.email, role: r.role, active: r.active })));
   } catch (e) { return fail(e); }
 }
 
@@ -20,12 +21,14 @@ export async function POST(req: Request) {
     await requireAdmin(req);
     const { name, email, password, role } = await req.json();
     if (!email || !password || !["admin", "rep"].includes(role)) throw new Error("invalid input");
-    const u = await adminAuth.createUser({ email, password, displayName: name });
-    await adminAuth.setCustomUserClaims(u.uid, { role });
-    await adminDb.collection("users").doc(u.uid).set({
-      name: name || email, email, role, active: true, createdAt: new Date(),
+    const { data, error } = await supabaseAdmin.auth.admin.createUser({
+      email, password, email_confirm: true,
+      app_metadata: { role }, user_metadata: { name },
     });
-    return NextResponse.json({ uid: u.uid });
+    if (error) throw error;
+    const uid = data.user.id;
+    await supabaseAdmin.from("profiles").upsert({ id: uid, name: name || email, email, role, active: true });
+    return NextResponse.json({ uid });
   } catch (e) { return fail(e); }
 }
 
@@ -34,16 +37,16 @@ export async function PATCH(req: Request) {
     await requireAdmin(req);
     const { uid, active, role } = await req.json();
     if (!uid) throw new Error("uid required");
-    const patch: Record<string, unknown> = {};
-    if (typeof active === "boolean") {
-      patch.active = active;
-      await adminAuth.updateUser(uid, { disabled: !active });
-    }
+    const profilePatch: Record<string, unknown> = {};
     if (role && ["admin", "rep"].includes(role)) {
-      patch.role = role;
-      await adminAuth.setCustomUserClaims(uid, { role });
+      await supabaseAdmin.auth.admin.updateUserById(uid, { app_metadata: { role } });
+      profilePatch.role = role;
     }
-    await adminDb.collection("users").doc(uid).set(patch, { merge: true });
+    if (typeof active === "boolean") {
+      await supabaseAdmin.auth.admin.updateUserById(uid, { ban_duration: active ? "none" : "876000h" });
+      profilePatch.active = active;
+    }
+    if (Object.keys(profilePatch).length) await supabaseAdmin.from("profiles").update(profilePatch).eq("id", uid);
     return NextResponse.json({ ok: true });
   } catch (e) { return fail(e); }
 }

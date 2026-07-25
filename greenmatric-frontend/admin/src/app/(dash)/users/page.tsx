@@ -8,14 +8,14 @@ import { Card, Button, Field, Spinner } from "@/components/ui";
 
 export default function UsersPage() {
   const { ready, role } = useRequireAdmin();
-  const { user } = useAuth();
+  const { user, getToken } = useAuth();
   const [users, setUsers] = useState<AppUser[] | null>(null);
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "rep" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
   const api = useCallback(async (method: string, body?: object) => {
-    const token = await user!.getIdToken();
+    const token = await getToken();
     const res = await fetch("/api/users", {
       method,
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -23,7 +23,7 @@ export default function UsersPage() {
     });
     if (!res.ok) throw new Error((await res.json()).error || "request failed");
     return res.json();
-  }, [user]);
+  }, [getToken]);
 
   const load = useCallback(() => { api("GET").then(setUsers).catch(() => setUsers([])); }, [api]);
 
