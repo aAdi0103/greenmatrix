@@ -48,12 +48,12 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
 
   return (
     <div>
-      <Link href="/" className="text-sm text-slate-500 hover:text-slate-700">← All leads</Link>
+      <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-700">← All leads</Link>
 
       <div className="mt-3 flex flex-wrap items-center gap-3">
         <h1 className="text-2xl font-bold">{l.name}</h1>
         <StatusBadge status={l.status} />
-        <span className="text-sm text-slate-400">· {toDate(l.createdAt)?.toLocaleString() ?? ""}</span>
+        <span className="text-sm text-zinc-400">· {toDate(l.createdAt)?.toLocaleString() ?? ""}</span>
       </div>
       <div className="mt-2 flex gap-2">
         <a href={`https://wa.me/${l.phone.replace(/[^\d]/g, "")}`} target="_blank"><Button variant="outline">WhatsApp</Button></a>
@@ -63,29 +63,29 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
       <div className="mt-6 grid lg:grid-cols-3 gap-6">
         {/* Details */}
         <Card className="lg:col-span-1 p-5 space-y-2 text-sm h-max">
-          <h2 className="font-semibold text-slate-700">Enquiry</h2>
+          <h2 className="font-semibold text-zinc-700">Enquiry</h2>
           {[
             ["Phone", l.phone], ["Email", l.email], ["Company", l.company],
             ["City / State", [l.city, l.state].filter(Boolean).join(", ")],
             ["Product", l.productInterest], ["Capacity", l.capacity],
             ["Source", l.source], ["Page", l.sourcePage],
           ].map(([k, v]) => (
-            <div key={k} className="flex justify-between gap-4 border-b border-slate-100 py-1.5">
-              <span className="text-slate-400">{k}</span><span className="text-right text-slate-700">{v || "—"}</span>
+            <div key={k} className="flex justify-between gap-4 border-b border-zinc-100 py-1.5">
+              <span className="text-zinc-400">{k}</span><span className="text-right text-zinc-700">{v || "—"}</span>
             </div>
           ))}
-          {l.message && <div className="pt-2"><div className="text-slate-400">Message</div><p className="mt-1 text-slate-700">{l.message}</p></div>}
+          {l.message && <div className="pt-2"><div className="text-zinc-400">Message</div><p className="mt-1 text-zinc-700">{l.message}</p></div>}
         </Card>
 
         {/* Work panel */}
         <div className="lg:col-span-2 space-y-6">
           <Card className="p-5">
-            <h2 className="font-semibold text-slate-700">Pipeline</h2>
+            <h2 className="font-semibold text-zinc-700">Pipeline</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <StatusBadge status={l.status} />
               {allowed.length > 0 ? allowed.map((s) => (
                 <Button key={s} variant="outline" onClick={() => changeStatus(s)} disabled={saving} className="capitalize">→ {s}</Button>
-              )) : <span className="text-sm text-slate-400">Closed</span>}
+              )) : <span className="text-sm text-zinc-400">Closed</span>}
             </div>
 
             <div className="mt-5 grid sm:grid-cols-2 gap-4">
@@ -98,7 +98,7 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
               </div>
             </div>
             <div className="mt-4 flex items-center gap-3">
-              <label className="flex items-center gap-2 text-sm text-slate-600">
+              <label className="flex items-center gap-2 text-sm text-zinc-600">
                 <input type="checkbox" checked={!!l.contacted} onChange={(e) => setLead({ ...l, contacted: e.target.checked })} /> Contacted
               </label>
               <Button onClick={() => patch({
@@ -112,19 +112,19 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
 
           {/* Notes */}
           <Card className="p-5">
-            <h2 className="font-semibold text-slate-700">Notes <span className="text-xs font-normal text-slate-400">(append-only)</span></h2>
+            <h2 className="font-semibold text-zinc-700">Notes <span className="text-xs font-normal text-zinc-400">(append-only)</span></h2>
             <div className="mt-3 space-y-3">
               {notes.map((n) => (
-                <div key={n.id} className="rounded-lg bg-slate-50 p-3 text-sm">
-                  <p className="text-slate-700">{n.text}</p>
-                  <div className="mt-1 text-xs text-slate-400">{n.authorName} · {toDate(n.createdAt)?.toLocaleString() ?? "just now"}</div>
+                <div key={n.id} className="rounded-lg bg-zinc-50 p-3 text-sm">
+                  <p className="text-zinc-700">{n.text}</p>
+                  <div className="mt-1 text-xs text-zinc-400">{n.authorName} · {toDate(n.createdAt)?.toLocaleString() ?? "just now"}</div>
                 </div>
               ))}
-              {notes.length === 0 && <p className="text-sm text-slate-400">No notes yet.</p>}
+              {notes.length === 0 && <p className="text-sm text-zinc-400">No notes yet.</p>}
             </div>
             <div className="mt-4 flex gap-2">
               <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Add a note…"
-                className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-emerald-500" />
+                className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-emerald-500" />
               <Button onClick={postNote}>Add</Button>
             </div>
           </Card>

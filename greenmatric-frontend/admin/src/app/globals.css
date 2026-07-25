@@ -7,8 +7,15 @@
 html { height: 100%; }
 
 body {
-  background: #f6f7f9;
-  color: #0f1720;
+  background: #fafafa;
+  color: #18181b; /* zinc-900 */
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+/* Subtle, quiet scrollbars (SaaS feel) */
+* { scrollbar-width: thin; scrollbar-color: #d4d4d8 transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }

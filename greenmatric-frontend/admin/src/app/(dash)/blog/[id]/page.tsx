@@ -78,10 +78,10 @@ export default function ArticleEditor({ params }: { params: Promise<{ id: string
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <Link href="/blog" className="text-sm text-slate-500 hover:text-slate-700">← All articles</Link>
+        <Link href="/blog" className="text-sm text-zinc-500 hover:text-zinc-700">← All articles</Link>
         <div className="flex items-center gap-2">
           {msg && <span className="text-sm text-emerald-600">{msg}</span>}
-          <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${art.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-slate-500"}`}>{art.status}</span>
+          <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${art.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-zinc-100 text-zinc-500"}`}>{art.status}</span>
           <Button variant="outline" onClick={() => save()} disabled={saving}>{saving ? "Saving…" : "Save"}</Button>
           {art.status === "published"
             ? <Button variant="outline" onClick={onUnpublish}>Unpublish</Button>
@@ -94,7 +94,7 @@ export default function ArticleEditor({ params }: { params: Promise<{ id: string
         <div className="lg:col-span-2 space-y-4">
           <Field label="Title" name="title" value={art.title} onChange={onTitle} />
           <div className="text-sm">
-            <div className="mb-1 text-xs font-medium text-slate-500">Body</div>
+            <div className="mb-1 text-xs font-medium text-zinc-500">Body</div>
             <Editor value={art.body} onChange={(html) => set({ body: html })} />
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function ArticleEditor({ params }: { params: Promise<{ id: string
           </Card>
 
           <Card className="p-4 space-y-3">
-            <div className="text-xs font-medium text-slate-500">Cover image</div>
+            <div className="text-xs font-medium text-zinc-500">Cover image</div>
             {art.coverImage && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={art.coverImage} alt="cover" className="h-32 w-full rounded-lg object-cover" />
@@ -119,7 +119,7 @@ export default function ArticleEditor({ params }: { params: Promise<{ id: string
           </Card>
 
           <Card className="p-4 space-y-3">
-            <div className="text-xs font-medium text-slate-500">SEO</div>
+            <div className="text-xs font-medium text-zinc-500">SEO</div>
             <Field label="SEO title" name="seoTitle" value={art.seoTitle ?? ""} onChange={(v) => set({ seoTitle: v })} />
             <Field label="Meta description" name="seoMeta" textarea value={art.seoMeta ?? ""} onChange={(v) => set({ seoMeta: v })} />
           </Card>

@@ -6,7 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 function ToolBtn({ editor, cmd, active, label }: { editor: TipTapEditor; cmd: () => void; active: boolean; label: string }) {
   return (
     <button type="button" onMouseDown={(e) => { e.preventDefault(); cmd(); }}
-      className={`rounded px-2 py-1 text-sm font-medium ${active ? "bg-emerald-100 text-emerald-700" : "text-slate-600 hover:bg-slate-100"}`}>
+      className={`rounded px-2 py-1 text-sm font-medium ${active ? "bg-emerald-100 text-emerald-700" : "text-zinc-600 hover:bg-zinc-100"}`}>
       {label}
     </button>
   );
@@ -25,11 +25,11 @@ export function Editor({ value, onChange }: { value: string; onChange: (html: st
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
 
-  if (!editor) return <div className="min-h-[360px] rounded-lg border border-slate-300 bg-white" />;
+  if (!editor) return <div className="min-h-[360px] rounded-lg border border-zinc-300 bg-white" />;
 
   return (
-    <div className="rounded-lg border border-slate-300 bg-white">
-      <div className="flex flex-wrap gap-1 border-b border-slate-200 p-2">
+    <div className="rounded-lg border border-zinc-300 bg-white">
+      <div className="flex flex-wrap gap-1 border-b border-zinc-200 p-2">
         <ToolBtn editor={editor} label="B" active={editor.isActive("bold")} cmd={() => editor.chain().focus().toggleBold().run()} />
         <ToolBtn editor={editor} label="I" active={editor.isActive("italic")} cmd={() => editor.chain().focus().toggleItalic().run()} />
         <ToolBtn editor={editor} label="H2" active={editor.isActive("heading", { level: 2 })} cmd={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} />
