@@ -9,7 +9,7 @@ export function useRequireAdmin() {
   const { role, loading } = useAuth();
   const router = useRouter();
   useEffect(() => {
-    if (!loading && role !== "admin") router.replace("/");
+    if (!loading && role !== "admin") router.replace("/dashboard");
   }, [role, loading, router]);
   return { role, ready: !loading };
 }

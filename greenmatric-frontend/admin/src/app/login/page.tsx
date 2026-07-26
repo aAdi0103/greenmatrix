@@ -15,7 +15,7 @@ export default function LoginPage() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (!loading && user) router.replace("/");
+    if (!loading && user) router.replace("/dashboard");
   }, [user, loading, router]);
 
   async function onSubmit(e: React.FormEvent) {
@@ -24,7 +24,7 @@ export default function LoginPage() {
     setError(null);
     try {
       await login(email, password);
-      router.replace("/");
+      router.replace("/dashboard");
     } catch {
       setError("Invalid email or password.");
     } finally {

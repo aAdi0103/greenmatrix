@@ -10,7 +10,7 @@ import { useAuth } from "@/lib/auth";
 import { Spinner, cn } from "@/components/ui";
 
 const NAV = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/blog", label: "Blog", icon: FileText, adminOnly: true },
   { href: "/analytics", label: "Analytics", icon: BarChart3, adminOnly: true },
   { href: "/users", label: "Users", icon: Users, adminOnly: true },
@@ -29,7 +29,8 @@ export default function DashLayout({ children }: { children: React.ReactNode }) 
   if (loading || !user) return <Spinner />;
 
   const items = NAV.filter((n) => !n.adminOnly || role === "admin");
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const isActive = (href: string) =>
+    href === "/dashboard" ? pathname === "/dashboard" || pathname.startsWith("/leads") : pathname.startsWith(href);
 
   const SidebarInner = (
     <>

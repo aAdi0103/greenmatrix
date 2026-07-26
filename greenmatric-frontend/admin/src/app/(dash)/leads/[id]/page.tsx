@@ -20,7 +20,7 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
 
   if (lead === "loading") return <Spinner />;
   if (!lead) return (
-    <div><h1 className="text-xl font-bold">Lead not found</h1><Link href="/" className="text-emerald-600">← Back</Link></div>
+    <div><h1 className="text-xl font-bold">Lead not found</h1><Link href="/dashboard" className="text-emerald-600">← Back</Link></div>
   );
 
   const l = lead;
@@ -48,7 +48,7 @@ export default function LeadDetailPage({ params }: { params: Promise<{ id: strin
 
   return (
     <div>
-      <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-700">← All leads</Link>
+      <Link href="/dashboard" className="text-sm text-zinc-500 hover:text-zinc-700">← All leads</Link>
 
       <div className="mt-3 flex flex-wrap items-center gap-3">
         <h1 className="text-2xl font-bold">{l.name}</h1>
