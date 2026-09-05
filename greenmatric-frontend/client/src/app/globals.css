@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
-/* Theme A — Animated / bold. Dark canvas, neon leaf-green + water-blue accents. */
+/* Theme A — Green-forward variant. Deep emerald canvas (more green, less black),
+   bright leaf-green + water-blue accents. Same token names → whole site re-themes. */
 @theme {
-  --color-ink: #05100b;
-  --color-ink-2: #0a1a12;
-  --color-brand: #2ecc57;
-  --color-brand-dim: #1f8f3d;
-  --color-aqua: #2f9bff;
-  --color-mist: #a7c7b6;
+  --color-ink: #06271c;      /* deep emerald canvas */
+  --color-ink-2: #0d3d2c;    /* raised panels / sections */
+  --color-brand: #38d660;    /* bright leaf green accent */
+  --color-brand-dim: #1f9d44;
+  --color-aqua: #2f9bff;     /* water blue (logo nod) */
+  --color-mist: #b0d4c0;     /* muted green-tinted text */
   --font-sans: var(--font-geist-sans);
 }
 
@@ -16,18 +17,23 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-  color: #eaf5ee;
+  /* deep emerald with a soft green radial for premium depth */
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(56, 214, 96, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(47, 155, 255, 0.06), transparent 55%),
+    var(--color-ink);
+  background-attachment: fixed;
+  color: #eafaf0;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Reusable glows / gradients for the bold theme */
 .glow-brand {
-  box-shadow: 0 0 0 1px rgba(46, 204, 87, 0.25), 0 20px 60px -20px rgba(46, 204, 87, 0.35);
+  box-shadow: 0 0 0 1px rgba(56, 214, 96, 0.28), 0 20px 60px -20px rgba(56, 214, 96, 0.4);
 }
 .text-gradient {
-  background: linear-gradient(100deg, #2ecc57 0%, #2f9bff 100%);
+  background: linear-gradient(100deg, #38d660 0%, #2fd6a8 55%, #2f9bff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
