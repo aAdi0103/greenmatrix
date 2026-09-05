@@ -66,7 +66,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
           <Field label="City & State" name="city" placeholder="Bokaro, Jharkhand" />
         </div>
       )}
-      <Field label="Product / Solution" name="product" placeholder="Which machine or line?" />
+      <Field label="Machine / RO plant" name="product" placeholder="Which machine or RO plant?" />
       <Field label="Message" name="message" textarea placeholder="Target output, budget, timeline…" />
       {error && <p className="text-sm text-red-400">{error}</p>}
       <button disabled={sending} className="w-full rounded-lg bg-brand py-3 font-semibold text-ink glow-brand hover:brightness-110 transition disabled:opacity-60">

@@ -22,7 +22,7 @@ export default function ContactPage() {
             <div className="space-y-4 text-sm">
               <a href={`tel:${CONTACT.phonePrimary}`} className="flex items-center gap-3 rounded-xl border border-white/10 p-4 hover:border-brand/40 transition">
                 <span className="text-brand text-xl">📞</span>
-                <div><div className="font-semibold">Call</div><div className="text-mist">{CONTACT.phonePrimary} · {CONTACT.phoneSecondary}</div></div>
+                <div><div className="font-semibold">Call</div><div className="text-mist">{CONTACT.phonePrimary} · {CONTACT.phoneSecondary} · {CONTACT.phoneTertiary}</div></div>
               </a>
               <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" className="flex items-center gap-3 rounded-xl border border-white/10 p-4 hover:border-brand/40 transition">
                 <span className="text-brand text-xl">💬</span>
@@ -32,9 +32,13 @@ export default function ContactPage() {
                 <span className="text-brand text-xl">✉️</span>
                 <div><div className="font-semibold">Email</div><div className="text-mist">{CONTACT.email}</div></div>
               </a>
-              <div className="flex items-center gap-3 rounded-xl border border-white/10 p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
                 <span className="text-brand text-xl">📍</span>
-                <div><div className="font-semibold">Head office</div><div className="text-mist">{CONTACT.address}</div></div>
+                <div><div className="font-semibold">Head office — Bokaro</div><div className="text-mist">{CONTACT.address}</div></div>
+              </div>
+              <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+                <span className="text-brand text-xl">📍</span>
+                <div><div className="font-semibold">Branch office — Faridabad</div><div className="text-mist">{CONTACT.address2}</div></div>
               </div>
             </div>
             <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">

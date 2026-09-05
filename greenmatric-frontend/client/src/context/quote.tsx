@@ -106,7 +106,7 @@ function QuoteModal({ open, onClose, preset }: { open: boolean; onClose: () => v
                   {preset.product ? (
                     <Field label="Product" name="product" value={preset.product} readOnly />
                   ) : (
-                    <Field label="Product / Solution" name="product" placeholder="Which machine or line?" />
+                    <Field label="Machine / RO plant" name="product" placeholder="Which machine or RO plant?" />
                   )}
                   <Field label="Message" name="message" textarea placeholder="Target output, budget, timeline…" />
                   {error && <p className="text-sm text-red-400">{error}</p>}

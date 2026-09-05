@@ -1,20 +1,26 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { BRAND, LEGAL_NAME, ISO, CLIENTS, ASSETS, WHY } from "@/content/site";
+import { BRAND, LEGAL_NAME, ISO, CLIENTS, WHY } from "@/content/site";
 import { PRODUCTS, STAGES, SOLUTIONS, type Stage } from "@/content/products";
 import { Container, Section, Reveal, Button, Card, SectionHeading } from "@/components/ui";
 import { useQuote } from "@/context/quote";
+import { storageUrl } from "@/lib/storage";
 
 const STATS = [
   { n: "14", l: "States served" },
-  { n: "12", l: "Machine lines" },
+  { n: `${PRODUCTS.length}`, l: "Machine lines" },
   { n: "5,000+", l: "Spares stocked" },
   { n: "95%+", l: "Availability" },
 ];
+
+// Real Greenmatrix machine photos for the hero (from Supabase Storage).
+const HERO_MAIN = storageUrl("products/water-rfc/main.jpg");
+const HERO_THUMBS = ["water-purification", "bopp-label-machine", "shrink-wrapping"].map(
+  (s) => ({ slug: s, url: storageUrl(`products/${s}/main.jpg`) }),
+);
 
 export default function Home() {
   const { openQuote } = useQuote();
@@ -37,11 +43,15 @@ export default function Home() {
             </motion.span>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}
               className="mt-5 text-4xl sm:text-6xl font-black leading-[1.05] tracking-tight">
-              Turnkey <span className="text-gradient">water &amp; bottling</span> plants, built end to end.
+              Complete <span className="text-gradient">Water Bottling Plant</span> Solutions — From Concept to Production
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
-              className="mt-5 text-lg text-mist max-w-lg">
-              From RO treatment to filling, labeling and shrink-wrap — {LEGAL_NAME} manufactures, installs and services complete packaging lines across India.
+              className="mt-5 text-lg text-mist max-w-xl">
+              We provide end-to-end turnkey solutions for packaged drinking water plants — RO water
+              treatment systems, PET blow moulding machines, bottle filling &amp; capping lines, labeling
+              machines, shrink wrapping systems, conveyors, installation, commissioning, operator training,
+              Annual Maintenance Contracts (AMC) and reliable after-sales support. From project planning to
+              successful plant operation, {LEGAL_NAME} delivers everything you need under one roof.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
               className="mt-8 flex flex-wrap gap-3">
@@ -59,10 +69,18 @@ export default function Home() {
           </div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.7 }}>
             <motion.div animate={{ y: [0, -14, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative rounded-3xl overflow-hidden glow-brand border border-white/10">
-              <Image src={ASSETS.hero} alt="Water treatment plant" width={720} height={540} className="w-full h-auto object-cover" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+              className="relative rounded-3xl overflow-hidden glow-brand border border-white/10 bg-white">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={HERO_MAIN} alt="Greenmatrix bottling plant — automatic filling line" className="w-full h-auto object-cover" />
             </motion.div>
+            <div className="mt-3 grid grid-cols-3 gap-3">
+              {HERO_THUMBS.map((t) => (
+                <Link key={t.slug} href={`/products/${t.slug}`} className="rounded-xl overflow-hidden border border-white/10 bg-white hover:border-brand/40 transition">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.url} alt="Greenmatrix machine" className="h-20 w-full object-cover" />
+                </Link>
+              ))}
+            </div>
           </motion.div>
         </Container>
       </section>
@@ -83,7 +101,7 @@ export default function Home() {
       {/* Products */}
       <Section>
         <Container>
-          <SectionHeading title="Machines for every stage of the line" subtitle="Twelve production-grade machines — filter by line stage." />
+          <SectionHeading title="Machines for every stage of the line" subtitle="Production-grade machines for treatment, filling, labeling, packing and handling — filter by line stage." />
           <div className="mt-8 flex flex-wrap gap-2">
             {[{ id: "all", label: "All" }, ...STAGES].map((s) => (
               <button key={s.id} onClick={() => setStage(s.id as Stage | "all")}

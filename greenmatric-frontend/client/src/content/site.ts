@@ -3,16 +3,18 @@
 // Q-01: lead with "Greenmatrix" (single constant for easy swap).
 
 export const BRAND = "Greenmatrix";
-export const LEGAL_NAME = "Greenmatrix Industry Pvt. Ltd.";
+export const LEGAL_NAME = "Greenmatrix Industry Private Limited";
 export const TAGLINE = "Complete Bottle Packaging & Water Treatment Solutions";
 export const ISO = "ISO 9001:2015 Certified";
 
 export const CONTACT = {
   phonePrimary: "+919110992936",
   phoneSecondary: "+917667113766",
+  phoneTertiary: "+919470577684",
   whatsapp: "919110992936",
   email: "greenmatrixind@gmail.com",
   address: "Telidih Road, Chas, Bokaro, Jharkhand, India — 827013",
+  address2: "SCO No 221, First Floor, Omaxe World Street, Sector 79, Faridabad, Haryana 121004",
   city: "Bokaro",
 };
 
