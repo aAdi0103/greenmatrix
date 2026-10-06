@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { BRAND, NAV, ASSETS } from "@/content/site";
+import { BRAND, NAV } from "@/content/site";
+import { BrandLogo } from "./BrandLogo";
 import { useQuote } from "@/context/quote";
 
 export function Header() {
@@ -13,7 +13,7 @@ export function Header() {
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ink/70 border-b border-white/5">
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src={ASSETS.logo} alt={BRAND} width={38} height={30} className="rounded" />
+          <BrandLogo className="h-8 w-8" />
           <span className="font-bold tracking-tight text-lg">{BRAND}</span>
         </Link>
         <nav className="hidden md:flex items-center gap-7 text-sm text-mist">

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-import { BRAND, LEGAL_NAME, ISO, CONTACT, SOCIAL, PRESENCE, ASSETS, NAV } from "@/content/site";
+import { BRAND, LEGAL_NAME, ISO, CONTACT, SOCIAL, PRESENCE, NAV } from "@/content/site";
+import { BrandLogo } from "./BrandLogo";
 
 // Brand glyphs (lucide dropped brand icons for trademark reasons).
 function Instagram({ className = "" }: { className?: string }) {
@@ -24,7 +24,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 grid md:grid-cols-4 gap-10 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <Image src={ASSETS.logo} alt={BRAND} width={34} height={27} className="rounded" />
+            <BrandLogo className="h-7 w-7" />
             <span className="font-bold">{LEGAL_NAME}</span>
           </div>
           <p className="mt-3 text-mist">{ISO}</p>
