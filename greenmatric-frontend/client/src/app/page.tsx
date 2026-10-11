@@ -160,22 +160,6 @@ export default function Home() {
           </div>
         </Container>
       </Section>
-
-      {/* CTA band */}
-      <Section className="bg-white border-t border-slate-200">
-        <Container>
-          <Reveal>
-            <div className="rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-600 to-sky-600 p-10 text-center text-white shadow-xl">
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">Get a quote in 24 hours</h2>
-              <p className="mt-3 text-blue-100 max-w-xl mx-auto">Tell us your target output — we&apos;ll spec the machine or the whole line and call you back within a day.</p>
-              <div className="mt-6 flex justify-center gap-3">
-                <button onClick={() => openQuote()} className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow-md hover:bg-blue-50 transition">Get a Quote</button>
-                <Link href="/contact" className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">Contact us</Link>
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
     </div>
   );
 }

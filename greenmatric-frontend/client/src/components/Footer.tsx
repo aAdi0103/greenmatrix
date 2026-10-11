@@ -1,94 +1,166 @@
-import Link from "next/link";
-import { LEGAL_NAME, ISO, CONTACT, SOCIAL, PRESENCE, NAV } from "@/content/site";
-import { BrandLogo } from "./BrandLogo";
+"use client";
 
-// Brand glyphs (lucide dropped brand icons for trademark reasons).
-function Instagram({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-    </svg>
-  );
-}
-function Youtube({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-      <path d="M23 12s0-3.8-.5-5.6a2.9 2.9 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.9 2.9 0 0 0-2 2C1 8.2 1 12 1 12s0 3.8.5 5.6a2.9 2.9 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.9 2.9 0 0 0 2-2C23 15.8 23 12 23 12ZM10 15.5v-7l6 3.5-6 3.5Z" />
-    </svg>
-  );
-}
+import Link from "next/link";
+import { NAV } from "@/content/site";
+import { BrandLogo } from "./BrandLogo";
+import { useQuote } from "@/context/quote";
 
 export function Footer() {
+  const { openQuote } = useQuote();
+
   return (
-    <footer className="border-t border-[#0e1930] bg-[#172749] text-white py-14">
-      <div className="mx-auto max-w-7xl px-5 grid md:grid-cols-4 gap-10 text-sm">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white p-1 shadow-sm ring-1 ring-white/20">
-              <BrandLogo className="h-full w-full" />
+    <footer>
+      {/* Pre-Footer CTA Banner matching reference */}
+      <section className="border-t border-[#1d315d] bg-[#172749] py-16 text-center text-white">
+        <div className="mx-auto max-w-5xl px-5">
+          <p className="text-xs font-bold tracking-[0.25em] text-blue-300 uppercase">
+            READY TO BUILD WITH US?
+          </p>
+          <h2 className="mt-3 text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase">
+            HAVE A PROJECT OR TECHNOLOGY REQUIREMENT?
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Let&apos;s build innovative solutions together. Our multi-disciplinary engineering teams are ready to inspect, design, construct, and maintain.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-slate-900 shadow-md hover:bg-slate-100 hover:shadow-lg transition"
+            >
+              Contact Us →
+            </Link>
+            <button
+              onClick={() => openQuote()}
+              className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-white/20 transition"
+            >
+              Get A Quotation →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Footer Section */}
+      <div className="border-t border-slate-900/60 bg-[#0c172e] text-slate-300 pt-16 pb-12">
+        <div className="mx-auto max-w-7xl px-5 flex flex-col md:flex-row flex-wrap lg:flex-nowrap justify-between items-start gap-10 text-sm">
+          {/* Column 1: Brand & Statement */}
+          <div className="space-y-4 max-w-sm lg:w-[32%]">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-black p-0.5 shadow-sm ring-1 ring-white/20 overflow-hidden">
+                <BrandLogo className="h-full w-full object-contain" />
+              </div>
+              <span className="font-extrabold text-base tracking-wide text-white">
+                GREENMATRIX INDUSTRY
+              </span>
             </div>
-            <span className="font-bold text-white">{LEGAL_NAME}</span>
+            <p className="text-xs font-medium text-slate-200 leading-snug">
+              Clean Water Technology. Precision Machinery. Empowering Enterprises.
+            </p>
+            <div>
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-sky-400">
+                Brand Statement:
+              </span>
+              <p className="mt-1 text-xs text-slate-400 leading-relaxed">
+                At Greenmatrix Industry, we blend advanced water purification engineering with heavy-duty packaging automation to empower beverage entrepreneurs, defence facilities, and public sector projects across India. We deliver certified, future-ready water solutions that protect health, conserve resources, and advance the nation.
+              </p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-xs italic text-slate-300">
+              &ldquo;Building Trust. Delivering Excellence. Creating the Future.&rdquo;
+            </div>
           </div>
-          <p className="mt-3 text-slate-300 text-xs">{ISO}</p>
-          <div className="mt-4 flex gap-3">
-            <a
-              href={SOCIAL.instagram}
-              target="_blank"
-              aria-label="Instagram"
-              className="grid h-9 w-9 place-items-center rounded-full border border-white/20 bg-white/10 text-slate-200 hover:bg-white hover:text-[#172749] hover:border-white shadow-xs transition"
-            >
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a
-              href={SOCIAL.youtube}
-              target="_blank"
-              aria-label="YouTube"
-              className="grid h-9 w-9 place-items-center rounded-full border border-white/20 bg-white/10 text-slate-200 hover:bg-white hover:text-[#172749] hover:border-white shadow-xs transition"
-            >
-              <Youtube className="h-4 w-4" />
-            </a>
+
+          {/* Column 2: Quick Links (Kept as current) */}
+          <div className="shrink-0">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
+              QUICK LINKS
+            </h3>
+            <ul className="space-y-2.5 text-xs text-slate-300">
+              {NAV.map((n) => (
+                <li key={n.href}>
+                  <Link
+                    href={n.href}
+                    className="hover:text-white transition-colors block py-0.5"
+                  >
+                    {n.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Main Office */}
+          <div className="shrink-0 max-w-xs">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
+              MAIN OFFICE
+            </h3>
+            <div className="space-y-2 text-xs text-slate-300">
+              <p className="font-semibold text-white">Green Matrix</p>
+              <p className="text-slate-400 leading-relaxed">
+                Omaxe World Street, SCO No. 221, First Floor,
+                <br />
+                Sector 79, Faridabad, Haryana 121101
+              </p>
+              <div className="pt-2">
+                <a
+                  href="tel:+919110992936"
+                  className="block text-slate-300 hover:text-white transition-colors"
+                >
+                  <span className="text-slate-400">Phone: </span>
+                  <span className="text-sky-300 font-medium">+91 91109 92936</span>
+                </a>
+                <a
+                  href="mailto:galaxysolutionsind@gmail.com"
+                  className="block text-slate-300 hover:text-white transition-colors mt-1.5 break-all"
+                >
+                  <span className="text-slate-400">Email: </span>
+                  <span className="text-sky-300 font-medium">galaxysolutionsind@gmail.com</span>
+                </a>
+              </div>
+              <p className="pt-2 text-slate-400">
+                Mon – Sat: 10:00 AM – 6:00 PM
+              </p>
+            </div>
+          </div>
+
+          {/* Column 4: Branch Office */}
+          <div className="shrink-0 max-w-xs">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
+              BRANCH OFFICE
+            </h3>
+            <div className="space-y-2 text-xs text-slate-300">
+              <p className="font-semibold text-white">Green Matrix</p>
+              <p className="text-slate-400 leading-relaxed">
+                Telidih Road, Chas,
+                <br />
+                Bokaro Steel City, Jharkhand – 827013, India
+              </p>
+              <div className="pt-2">
+                <a
+                  href="tel:+919852625103"
+                  className="block text-slate-300 hover:text-white transition-colors"
+                >
+                  <span className="text-slate-400">Phone: </span>
+                  <span className="text-sky-300 font-medium">+91-9852625103</span>
+                </a>
+                <a
+                  href="mailto:galaxysolutionsind@gmail.com"
+                  className="block text-slate-300 hover:text-white transition-colors mt-1.5 break-all"
+                >
+                  <span className="text-slate-400">Email: </span>
+                  <span className="text-sky-300 font-medium">galaxysolutionsind@gmail.com</span>
+                </a>
+              </div>
+              <p className="pt-2 text-slate-400">
+                Mon – Sat: 10:00 AM – 6:00 PM
+              </p>
+            </div>
           </div>
         </div>
-        <div>
-          <div className="font-semibold text-white mb-3">Explore</div>
-          <ul className="space-y-1.5 text-slate-300">
-            {NAV.map((n) => (
-              <li key={n.href}>
-                <Link href={n.href} className="hover:text-white transition-colors">
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <div className="font-semibold text-white mb-3">Pan-India presence</div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-slate-300">
-            {PRESENCE.map((p) => (
-              <span key={p}>{p}</span>
-            ))}
-          </div>
-        </div>
-        <div>
-          <div className="font-semibold text-white mb-3">Contact</div>
-          <a href={`tel:${CONTACT.phonePrimary}`} className="block text-slate-300 hover:text-white transition-colors">
-            {CONTACT.phonePrimary}
-          </a>
-          <a href={`tel:${CONTACT.phoneSecondary}`} className="block text-slate-300 hover:text-white transition-colors">
-            {CONTACT.phoneSecondary}
-          </a>
-          <a href={`tel:${CONTACT.phoneTertiary}`} className="block text-slate-300 hover:text-white transition-colors">
-            {CONTACT.phoneTertiary}
-          </a>
-          <a href={`mailto:${CONTACT.email}`} className="block text-slate-300 hover:text-white transition-colors mt-1">
-            {CONTACT.email}
-          </a>
-          <p className="text-slate-400 mt-2 text-xs leading-relaxed">{CONTACT.address}</p>
-          <p className="text-slate-400 mt-1 text-xs leading-relaxed">{CONTACT.address2}</p>
-        </div>
+
       </div>
-      <div className="mx-auto max-w-7xl px-5 mt-12 pt-6 border-t border-white/10 text-center text-xs text-slate-400">
-        © {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.
+
+      {/* Bottom Copyright Strip */}
+      <div className="bg-[#142343] border-t border-blue-900/50 py-4 text-center text-xs text-slate-300">
+        © {new Date().getFullYear()} Greenmatrix Industry. All rights reserved. Registered Indian Engineering Organization.
       </div>
     </footer>
   );
