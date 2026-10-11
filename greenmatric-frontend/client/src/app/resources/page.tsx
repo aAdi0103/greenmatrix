@@ -21,7 +21,7 @@ export default async function ResourcesPage() {
       <Section>
         <Container>
           {articles.length === 0 ? (
-            <div className="rounded-2xl border border-white/10 bg-ink-2/40 p-10 text-center text-mist">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-10 text-center text-slate-500 shadow-xs">
               No articles published yet. Check back soon.
             </div>
           ) : (
@@ -31,11 +31,11 @@ export default async function ResourcesPage() {
                   <Card className="h-full">
                     {a.coverImage && (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={a.coverImage} alt={a.title} className="mb-4 h-40 w-full rounded-lg object-cover" />
+                      <img src={a.coverImage} alt={a.title} className="mb-4 h-40 w-full rounded-lg object-cover bg-slate-100" />
                     )}
-                    <h3 className="font-bold leading-snug">{a.title}</h3>
-                    {a.excerpt && <p className="mt-2 text-sm text-mist">{a.excerpt}</p>}
-                    <span className="mt-4 inline-block text-sm font-semibold text-brand">Read →</span>
+                    <h3 className="font-bold leading-snug text-slate-900">{a.title}</h3>
+                    {a.excerpt && <p className="mt-2 text-sm text-slate-600">{a.excerpt}</p>}
+                    <span className="mt-4 inline-block text-sm font-semibold text-blue-600">Read →</span>
                   </Card>
                 </Link>
               ))}

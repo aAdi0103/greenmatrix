@@ -45,16 +45,16 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
 
   if (done) {
     return (
-      <div className="rounded-2xl border border-brand/30 bg-brand/10 p-8 text-center">
+      <div className="rounded-2xl border border-blue-200 bg-blue-50/70 p-8 text-center">
         <div className="text-4xl">✅</div>
-        <h3 className="mt-3 text-xl font-bold">Enquiry received</h3>
-        <p className="mt-2 text-mist">Our team will call you within 24 hours.</p>
+        <h3 className="mt-3 text-xl font-bold text-slate-900">Enquiry received</h3>
+        <p className="mt-2 text-slate-600">Our team will call you within 24 hours.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-2xl border border-white/10 bg-ink-2/50 p-6 space-y-4">
+    <form onSubmit={onSubmit} className="rounded-2xl border border-slate-200/90 bg-white shadow-xs p-6 space-y-4">
       <input type="text" name="company_website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Name" name="name" required placeholder="Your name" />
@@ -68,8 +68,8 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       )}
       <Field label="Machine / RO plant" name="product" placeholder="Which machine or RO plant?" />
       <Field label="Message" name="message" textarea placeholder="Target output, budget, timeline…" />
-      {error && <p className="text-sm text-red-400">{error}</p>}
-      <button disabled={sending} className="w-full rounded-lg bg-brand py-3 font-semibold text-ink glow-brand hover:brightness-110 transition disabled:opacity-60">
+      {error && <p className="text-sm text-red-600">{error}</p>}
+      <button disabled={sending} className="w-full rounded-lg bg-brand py-3 font-semibold text-white glow-brand hover:brightness-110 transition disabled:opacity-60">
         {sending ? "Sending…" : "Send enquiry"}
       </button>
     </form>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND, LEGAL_NAME, ISO, CONTACT, SOCIAL, PRESENCE, NAV } from "@/content/site";
+import { LEGAL_NAME, ISO, CONTACT, SOCIAL, PRESENCE, NAV } from "@/content/site";
 import { BrandLogo } from "./BrandLogo";
 
 // Brand glyphs (lucide dropped brand icons for trademark reasons).
@@ -20,48 +20,48 @@ function Youtube({ className = "" }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 py-14">
+    <footer className="border-t border-slate-200 bg-white py-14">
       <div className="mx-auto max-w-7xl px-5 grid md:grid-cols-4 gap-10 text-sm">
         <div>
           <div className="flex items-center gap-2">
             <BrandLogo className="h-7 w-7" />
-            <span className="font-bold">{LEGAL_NAME}</span>
+            <span className="font-bold text-slate-900">{LEGAL_NAME}</span>
           </div>
-          <p className="mt-3 text-mist">{ISO}</p>
+          <p className="mt-3 text-slate-600">{ISO}</p>
           <div className="mt-4 flex gap-3">
-            <a href={SOCIAL.instagram} target="_blank" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-mist hover:text-white hover:border-brand/40 transition">
+            <a href={SOCIAL.instagram} target="_blank" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-slate-300 bg-white text-slate-600 hover:text-blue-600 hover:border-blue-400 shadow-xs transition">
               <Instagram className="h-4 w-4" />
             </a>
-            <a href={SOCIAL.youtube} target="_blank" aria-label="YouTube" className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-mist hover:text-white hover:border-brand/40 transition">
+            <a href={SOCIAL.youtube} target="_blank" aria-label="YouTube" className="grid h-9 w-9 place-items-center rounded-full border border-slate-300 bg-white text-slate-600 hover:text-blue-600 hover:border-blue-400 shadow-xs transition">
               <Youtube className="h-4 w-4" />
             </a>
           </div>
         </div>
         <div>
-          <div className="font-semibold mb-3">Explore</div>
-          <ul className="space-y-1.5 text-mist">
+          <div className="font-semibold text-slate-900 mb-3">Explore</div>
+          <ul className="space-y-1.5 text-slate-600">
             {NAV.map((n) => (
-              <li key={n.href}><Link href={n.href} className="hover:text-white">{n.label}</Link></li>
+              <li key={n.href}><Link href={n.href} className="hover:text-blue-600 transition-colors">{n.label}</Link></li>
             ))}
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-3">Pan-India presence</div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-mist">
+          <div className="font-semibold text-slate-900 mb-3">Pan-India presence</div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-slate-600">
             {PRESENCE.map((p) => <span key={p}>{p}</span>)}
           </div>
         </div>
         <div>
-          <div className="font-semibold mb-3">Contact</div>
-          <a href={`tel:${CONTACT.phonePrimary}`} className="block text-mist hover:text-white">{CONTACT.phonePrimary}</a>
-          <a href={`tel:${CONTACT.phoneSecondary}`} className="block text-mist hover:text-white">{CONTACT.phoneSecondary}</a>
-          <a href={`tel:${CONTACT.phoneTertiary}`} className="block text-mist hover:text-white">{CONTACT.phoneTertiary}</a>
-          <a href={`mailto:${CONTACT.email}`} className="block text-mist hover:text-white mt-1">{CONTACT.email}</a>
-          <p className="text-mist mt-2">{CONTACT.address}</p>
-          <p className="text-mist mt-2">{CONTACT.address2}</p>
+          <div className="font-semibold text-slate-900 mb-3">Contact</div>
+          <a href={`tel:${CONTACT.phonePrimary}`} className="block text-slate-600 hover:text-blue-600 transition-colors">{CONTACT.phonePrimary}</a>
+          <a href={`tel:${CONTACT.phoneSecondary}`} className="block text-slate-600 hover:text-blue-600 transition-colors">{CONTACT.phoneSecondary}</a>
+          <a href={`tel:${CONTACT.phoneTertiary}`} className="block text-slate-600 hover:text-blue-600 transition-colors">{CONTACT.phoneTertiary}</a>
+          <a href={`mailto:${CONTACT.email}`} className="block text-slate-600 hover:text-blue-600 transition-colors mt-1">{CONTACT.email}</a>
+          <p className="text-slate-600 mt-2">{CONTACT.address}</p>
+          <p className="text-slate-600 mt-2">{CONTACT.address2}</p>
         </div>
       </div>
-      <p className="mt-10 text-center text-xs text-mist">© {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.</p>
+      <p className="mt-10 text-center text-xs text-slate-500">© {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.</p>
     </footer>
   );
 }

@@ -9,6 +9,7 @@ const ADMIN = process.env.ADMIN_URL || "http://localhost:3001";
 
 const mk = () => createClient(URL, ANON, { auth: { persistSession: false } });
 let pass = 0, fail = 0;
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 const ok = (c, m) => { c ? (pass++, console.log("✅", m)) : (fail++, console.log("❌", m)); };
 
 async function main() {

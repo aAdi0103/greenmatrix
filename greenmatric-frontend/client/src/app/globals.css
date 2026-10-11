@@ -1,39 +1,35 @@
 @import "tailwindcss";
 
-/* Theme A — Green-forward variant. Deep emerald canvas (more green, less black),
-   bright leaf-green + water-blue accents. Same token names → whole site re-themes. */
+/* Theme — Clean Full White & Pure Ocean Blue */
 @theme {
-  --color-ink: #06271c;      /* deep emerald canvas */
-  --color-ink-2: #0d3d2c;    /* raised panels / sections */
-  --color-brand: #38d660;    /* bright leaf green accent */
-  --color-brand-dim: #1f9d44;
-  --color-aqua: #2f9bff;     /* water blue (logo nod) */
-  --color-mist: #b0d4c0;     /* muted green-tinted text */
+  --color-ink: #ffffff;      /* pure white canvas */
+  --color-ink-2: #f8fafc;    /* clean light panels / slate-50 */
+  --color-brand: #0284c7;    /* ocean water blue */
+  --color-brand-dim: #0369a1;
+  --color-aqua: #0ea5e9;     /* bright sky / cyan accent */
+  --color-mist: #64748b;     /* slate-500 refined muted text */
   --font-sans: var(--font-geist-sans);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #ffffff;
 }
 
 body {
-  /* deep emerald with a soft green radial for premium depth */
-  background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(56, 214, 96, 0.10), transparent 60%),
-    radial-gradient(900px 500px at 100% 0%, rgba(47, 155, 255, 0.06), transparent 55%),
-    var(--color-ink);
-  background-attachment: fixed;
-  color: #eafaf0;
+  background-color: #ffffff;
+  color: #0f172a;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Reusable glows / gradients for the bold theme */
+/* Reusable glows / gradients for the white & blue theme */
 .glow-brand {
-  box-shadow: 0 0 0 1px rgba(56, 214, 96, 0.28), 0 20px 60px -20px rgba(56, 214, 96, 0.4);
+  box-shadow: 0 0 0 1px rgba(2, 132, 199, 0.2), 0 10px 25px -5px rgba(2, 132, 199, 0.25);
 }
+
 .text-gradient {
-  background: linear-gradient(100deg, #38d660 0%, #2fd6a8 55%, #2f9bff 100%);
+  background: linear-gradient(100deg, #0369a1 0%, #0284c7 45%, #0ea5e9 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -51,8 +51,8 @@ export function Button({ children, href, onClick, variant = "primary", type = "b
   const base = "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition";
   const styles =
     variant === "primary"
-      ? "bg-brand text-ink glow-brand hover:brightness-110"
-      : "border border-white/15 text-white hover:bg-white/5";
+      ? "bg-brand text-white glow-brand hover:brightness-110"
+      : "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 hover:border-slate-400 shadow-xs";
   const cls = cn(base, styles, className);
   if (href) {
     const external = href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:");
@@ -64,7 +64,7 @@ export function Button({ children, href, onClick, variant = "primary", type = "b
 
 export function Card({ children, className = "", hover = true }: { children: ReactNode; className?: string; hover?: boolean }) {
   return (
-    <div className={cn("rounded-2xl border border-white/10 bg-ink-2/50 p-6", hover && "hover:border-brand/40 transition-colors", className)}>
+    <div className={cn("rounded-2xl border border-slate-200/90 bg-white shadow-xs p-6", hover && "hover:border-blue-400 hover:shadow-md transition-all", className)}>
       {children}
     </div>
   );
@@ -73,8 +73,8 @@ export function Card({ children, className = "", hover = true }: { children: Rea
 export function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <Reveal>
-      <h2 className="text-3xl sm:text-4xl font-black tracking-tight">{title}</h2>
-      {subtitle && <p className="mt-3 text-mist max-w-2xl">{subtitle}</p>}
+      <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">{title}</h2>
+      {subtitle && <p className="mt-3 text-slate-600 max-w-2xl">{subtitle}</p>}
     </Reveal>
   );
 }
@@ -85,10 +85,10 @@ export function Field({
   label: string; name: string; type?: string; required?: boolean; placeholder?: string;
   textarea?: boolean; value?: string; onChange?: (v: string) => void; readOnly?: boolean;
 }) {
-  const cls = "w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-sm outline-none focus:border-brand disabled:opacity-60";
+  const cls = "w-full rounded-lg bg-white border border-slate-300 px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-brand/20 disabled:opacity-60 transition";
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium text-mist">{label}{required && " *"}</span>
+      <span className="mb-1.5 block text-xs font-medium text-slate-700">{label}{required && " *"}</span>
       {textarea ? (
         <textarea name={name} required={required} placeholder={placeholder} rows={3} readOnly={readOnly}
           value={value} onChange={(e) => onChange?.(e.target.value)} className={cls} />

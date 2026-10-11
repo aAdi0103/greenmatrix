@@ -5,7 +5,7 @@ import StarterKit from "@tiptap/starter-kit";
 
 function ToolBtn({ editor, cmd, active, label }: { editor: TipTapEditor; cmd: () => void; active: boolean; label: string }) {
   return (
-    <button type="button" onMouseDown={(e) => { e.preventDefault(); cmd(); }}
+    <button type="button" disabled={!editor.isEditable} onMouseDown={(e) => { e.preventDefault(); cmd(); }}
       className={`rounded px-2 py-1 text-sm font-medium ${active ? "bg-emerald-100 text-emerald-700" : "text-zinc-600 hover:bg-zinc-100"}`}>
       {label}
     </button>

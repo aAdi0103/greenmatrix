@@ -20,33 +20,33 @@ export default function ContactPage() {
         <Container className="grid lg:grid-cols-2 gap-12">
           <div>
             <div className="space-y-4 text-sm">
-              <a href={`tel:${CONTACT.phonePrimary}`} className="flex items-center gap-3 rounded-xl border border-white/10 p-4 hover:border-brand/40 transition">
+              <a href={`tel:${CONTACT.phonePrimary}`} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-sm transition">
                 <span className="text-brand text-xl">📞</span>
-                <div><div className="font-semibold">Call</div><div className="text-mist">{CONTACT.phonePrimary} · {CONTACT.phoneSecondary} · {CONTACT.phoneTertiary}</div></div>
+                <div><div className="font-semibold text-slate-900">Call</div><div className="text-slate-600">{CONTACT.phonePrimary} · {CONTACT.phoneSecondary} · {CONTACT.phoneTertiary}</div></div>
               </a>
-              <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" className="flex items-center gap-3 rounded-xl border border-white/10 p-4 hover:border-brand/40 transition">
-                <span className="text-brand text-xl">💬</span>
-                <div><div className="font-semibold">WhatsApp</div><div className="text-mist">Chat with sales</div></div>
+              <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-sm transition">
+                <span className="text-blue-600 text-xl">💬</span>
+                <div><div className="font-semibold text-slate-900">WhatsApp</div><div className="text-slate-600">Chat with sales</div></div>
               </a>
-              <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 rounded-xl border border-white/10 p-4 hover:border-brand/40 transition">
+              <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-sm transition">
                 <span className="text-brand text-xl">✉️</span>
-                <div><div className="font-semibold">Email</div><div className="text-mist">{CONTACT.email}</div></div>
+                <div><div className="font-semibold text-slate-900">Email</div><div className="text-slate-600">{CONTACT.email}</div></div>
               </a>
-              <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4">
                 <span className="text-brand text-xl">📍</span>
-                <div><div className="font-semibold">Head office — Bokaro</div><div className="text-mist">{CONTACT.address}</div></div>
+                <div><div className="font-semibold text-slate-900">Head office — Bokaro</div><div className="text-slate-600">{CONTACT.address}</div></div>
               </div>
-              <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4">
                 <span className="text-brand text-xl">📍</span>
-                <div><div className="font-semibold">Branch office — Faridabad</div><div className="text-mist">{CONTACT.address2}</div></div>
+                <div><div className="font-semibold text-slate-900">Branch office — Faridabad</div><div className="text-slate-600">{CONTACT.address2}</div></div>
               </div>
             </div>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
+            <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 shadow-xs">
               <iframe src={mapSrc} title="Greenmatrix Bokaro location" className="w-full h-64" loading="lazy" />
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-bold mb-4">Send an enquiry</h2>
+            <h2 className="text-xl font-bold text-slate-900 mb-4">Send an enquiry</h2>
             <ContactForm />
           </div>
         </Container>

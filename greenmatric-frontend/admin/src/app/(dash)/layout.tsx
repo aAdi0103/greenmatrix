@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  LayoutDashboard, FileText, BarChart3, Users, Settings, LogOut, Menu, X, Droplet,
+  LayoutDashboard, FileText, BarChart3, Users, Settings, LogOut, Menu, Droplet,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { Spinner, cn } from "@/components/ui";
@@ -24,7 +24,6 @@ export default function DashLayout({ children }: { children: React.ReactNode }) 
   const [open, setOpen] = useState(false);
 
   useEffect(() => { if (!loading && !user) router.replace("/login"); }, [user, loading, router]);
-  useEffect(() => { setOpen(false); }, [pathname]);
 
   if (loading || !user) return <Spinner />;
 
@@ -46,7 +45,7 @@ export default function DashLayout({ children }: { children: React.ReactNode }) 
           const active = isActive(n.href);
           const Icon = n.icon;
           return (
-            <Link key={n.href} href={n.href}
+            <Link key={n.href} href={n.href} onClick={() => setOpen(false)}
               className={cn(
                 "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-colors",
                 active ? "bg-zinc-100 font-medium text-zinc-900" : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900",

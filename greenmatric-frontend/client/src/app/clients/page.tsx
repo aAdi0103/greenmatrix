@@ -23,24 +23,24 @@ export default function ClientsPage() {
       <Section>
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {CLIENTS.map((c) => (
-              <div key={c} className="grid place-items-center rounded-xl border border-white/10 bg-ink-2/40 p-6 text-center font-semibold text-white/70">
+            {CLIENTS.map((c, i) => (
+              <div key={`${c}-${i}`} className="grid place-items-center rounded-xl border border-slate-200 bg-white shadow-xs p-6 text-center font-semibold text-slate-800 hover:border-blue-400 hover:shadow-sm transition">
                 {c}
               </div>
             ))}
           </div>
-          <p className="mt-3 text-xs text-mist">Client logos load once assets are provided; names shown as placeholders.</p>
+          <p className="mt-3 text-xs text-slate-500">Client logos load once assets are provided; names shown as placeholders.</p>
 
           <div className="mt-14 grid sm:grid-cols-3 gap-5">
             {SNAPSHOTS.map((s) => (
-              <div key={s.t} className="rounded-2xl border border-white/10 p-6">
-                <h3 className="font-bold">{s.t}</h3>
-                <p className="mt-2 text-sm text-mist">{s.d}</p>
+              <div key={s.t} className="rounded-2xl border border-slate-200 bg-white shadow-xs p-6">
+                <h3 className="font-bold text-slate-900">{s.t}</h3>
+                <p className="mt-2 text-sm text-slate-600">{s.d}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-14 rounded-2xl border border-white/10 bg-ink-2/40 p-6 text-mist text-sm">
+          <div className="mt-14 rounded-2xl border border-blue-100 bg-blue-50/50 p-6 text-slate-600 text-sm">
             Reviews & project photos — coming soon (awaiting client permission).
           </div>
           <div className="mt-8"><EnquireButton>Become a client</EnquireButton></div>

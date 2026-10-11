@@ -36,7 +36,7 @@ export const NAV = [
 export const CLIENTS = [
   "CISF", "CRPF", "IndianOil", "SAIL", "Jharkhand Police",
   "DAV Public School", "Bokaro Public School", "Holy Cross School",
-  "Saint Joseph's School", "IndianOil", "Aquapey", "Zestera",
+  "Saint Joseph's School", "Aquapey", "Zestera",
 ];
 
 // 14-state presence (PPT "Our Presence").

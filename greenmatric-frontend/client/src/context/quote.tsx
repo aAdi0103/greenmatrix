@@ -79,21 +79,21 @@ function QuoteModal({ open, onClose, preset }: { open: boolean; onClose: () => v
       {open && (
         <motion.div className="fixed inset-0 z-[60] grid place-items-center p-4"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={close} />
-          <motion.div className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-ink-2 p-6"
+          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={close} />
+          <motion.div className="relative w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
             initial={{ y: 24, scale: 0.97 }} animate={{ y: 0, scale: 1 }} exit={{ y: 24, opacity: 0 }}>
-            <button onClick={close} aria-label="Close" className="absolute right-4 top-4 text-mist hover:text-white">✕</button>
+            <button onClick={close} aria-label="Close" className="absolute right-4 top-4 text-slate-400 hover:text-slate-700">✕</button>
             {done ? (
               <div className="py-8 text-center">
                 <div className="text-4xl">✅</div>
-                <h3 className="mt-3 text-xl font-bold">Enquiry received</h3>
-                <p className="mt-2 text-mist">Our team will call you within 24 hours.</p>
-                <button onClick={close} className="mt-6 rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-ink glow-brand">Done</button>
+                <h3 className="mt-3 text-xl font-bold text-slate-900">Enquiry received</h3>
+                <p className="mt-2 text-slate-600">Our team will call you within 24 hours.</p>
+                <button onClick={close} className="mt-6 rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-white glow-brand">Done</button>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-black">Get a quote</h3>
-                <p className="mt-1 text-sm text-mist">
+                <h3 className="text-xl font-black text-slate-900">Get a quote</h3>
+                <p className="mt-1 text-sm text-slate-600">
                   {preset.product ? `Enquiry for ${preset.product}` : "Tell us what you want to set up — we'll reply within 24h."}
                 </p>
                 <form onSubmit={onSubmit} className="mt-5 space-y-4">
@@ -109,8 +109,8 @@ function QuoteModal({ open, onClose, preset }: { open: boolean; onClose: () => v
                     <Field label="Machine / RO plant" name="product" placeholder="Which machine or RO plant?" />
                   )}
                   <Field label="Message" name="message" textarea placeholder="Target output, budget, timeline…" />
-                  {error && <p className="text-sm text-red-400">{error}</p>}
-                  <button disabled={sending} className="w-full rounded-lg bg-brand py-3 font-semibold text-ink glow-brand hover:brightness-110 transition disabled:opacity-60">
+                  {error && <p className="text-sm text-red-600">{error}</p>}
+                  <button disabled={sending} className="w-full rounded-lg bg-brand py-3 font-semibold text-white glow-brand hover:brightness-110 transition disabled:opacity-60">
                     {sending ? "Sending…" : "Send enquiry"}
                   </button>
                 </form>

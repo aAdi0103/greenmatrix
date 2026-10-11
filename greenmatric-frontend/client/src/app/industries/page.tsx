@@ -28,9 +28,9 @@ export default function IndustriesPage() {
         <Container>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {INDUSTRIES.map((i) => (
-              <div key={i.t} className="rounded-2xl border border-white/10 p-6 hover:border-brand/40 transition">
-                <h3 className="font-bold">{i.t}</h3>
-                <p className="mt-2 text-sm text-mist">{i.d}</p>
+              <div key={i.t} className="rounded-2xl border border-slate-200 bg-white shadow-xs p-6 hover:border-blue-400 hover:shadow-md transition">
+                <h3 className="font-bold text-slate-900">{i.t}</h3>
+                <p className="mt-2 text-sm text-slate-600">{i.d}</p>
               </div>
             ))}
           </div>
