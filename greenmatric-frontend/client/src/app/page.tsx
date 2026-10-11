@@ -71,7 +71,7 @@ export default function Home() {
             </motion.div>
             <div className="mt-3 grid grid-cols-3 gap-3">
               {HERO_THUMBS.map((t) => (
-                <Link key={t.slug} href={`/products/${t.slug}`} className="rounded-xl overflow-hidden border border-slate-200 bg-white hover:border-blue-400 shadow-xs transition">
+                <Link key={t.slug} href={`/products/${t.slug}`} className="rounded-xl overflow-hidden border border-[#BCD5F5] bg-slate-50 hover:border-[#6FA5E6] shadow-xs transition">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={t.url} alt="Greenmatrix machine" className="h-20 w-full object-cover" />
                 </Link>
@@ -102,14 +102,14 @@ export default function Home() {
             {[{ id: "all", label: "All" }, ...STAGES].map((s) => (
               <button key={s.id} onClick={() => setStage(s.id as Stage | "all")}
                 className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${stage === s.id ? "bg-brand text-white shadow-xs" : "border border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50"}`}>
-                {s.label}
+              {s.label}
               </button>
             ))}
           </div>
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {shown.map((p, i) => (
               <Reveal key={p.slug} i={i}>
-                <Card className="group h-full bg-white">
+                <Card className="group h-full bg-slate-50">
                   <div className="text-[11px] uppercase tracking-wide font-semibold text-sky-600">{p.stage}</div>
                   <Link href={`/products/${p.slug}`} className="mt-2 block font-bold text-lg text-slate-900 leading-snug hover:text-brand transition">{p.name}</Link>
                   <p className="mt-2 text-sm text-slate-600">{p.valueLine}</p>
@@ -132,7 +132,7 @@ export default function Home() {
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {WHY.map((w, i) => (
               <Reveal key={w.title} i={i}>
-                <div className="h-full rounded-2xl border border-slate-200 bg-white shadow-xs p-6">
+                <div className="h-full rounded-2xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-6 hover:shadow-md hover:border-[#6FA5E6] transition-all">
                   <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-700 font-black">{i + 1}</div>
                   <h3 className="mt-4 font-bold text-slate-900">{w.title}</h3>
                   <p className="mt-2 text-sm text-slate-600">{w.body}</p>
@@ -150,7 +150,7 @@ export default function Home() {
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {SOLUTIONS.map((s, i) => (
               <Reveal key={s.slug} i={i}>
-                <Link href={`/solutions/${s.slug}`} className="block h-full rounded-2xl bg-white border border-slate-200 shadow-xs p-6 hover:border-blue-400 hover:shadow-md transition">
+                <Link href={`/solutions/${s.slug}`} className="block h-full rounded-2xl bg-slate-50 border border-[#BCD5F5] shadow-xs p-6 hover:border-[#6FA5E6] hover:shadow-md transition">
                   <h3 className="font-bold text-lg text-slate-900">{s.name}</h3>
                   <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
                   <span className="mt-4 inline-block text-sm font-semibold text-blue-600">Plan my line →</span>

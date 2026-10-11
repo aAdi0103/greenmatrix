@@ -19,7 +19,7 @@ export default function SolutionsPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             {SOLUTIONS.map((s) => (
               <Link key={s.slug} href={`/solutions/${s.slug}`}
-                className="group rounded-2xl border border-slate-200 bg-white p-8 shadow-xs hover:border-blue-400 hover:shadow-md transition">
+                className="group rounded-2xl border border-[#BCD5F5] bg-slate-50 p-8 shadow-xs hover:border-[#6FA5E6] hover:shadow-md transition">
                 <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{s.name}</h2>
                 <p className="mt-2 text-slate-600">{s.desc}</p>
                 <div className="mt-4 text-sm font-medium text-slate-500">{s.machines.length} machines in this line</div>

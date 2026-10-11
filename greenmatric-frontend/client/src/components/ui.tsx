@@ -64,7 +64,7 @@ export function Button({ children, href, onClick, variant = "primary", type = "b
 
 export function Card({ children, className = "", hover = true }: { children: ReactNode; className?: string; hover?: boolean }) {
   return (
-    <div className={cn("rounded-2xl border border-slate-200/90 bg-white shadow-xs p-6", hover && "hover:border-blue-400 hover:shadow-md transition-all", className)}>
+    <div className={cn("rounded-2xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-6", hover && "hover:border-[#6FA5E6] hover:shadow-md transition-all", className)}>
       {children}
     </div>
   );

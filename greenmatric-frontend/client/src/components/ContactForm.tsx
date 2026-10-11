@@ -54,7 +54,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-2xl border border-slate-200/90 bg-white shadow-xs p-6 space-y-4">
+    <form onSubmit={onSubmit} className="rounded-2xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-6 space-y-4 hover:border-[#6FA5E6] transition-all">
       <input type="text" name="company_website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Name" name="name" required placeholder="Your name" />

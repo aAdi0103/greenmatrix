@@ -47,7 +47,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
               <h2 className="text-xl font-bold text-slate-900">The line, stage by stage</h2>
               <ol className="mt-5 space-y-3">
                 {machines.map((m, i) => m && (
-                  <li key={m.slug} className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-md transition">
+                  <li key={m.slug} className="flex items-center gap-4 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] hover:shadow-md transition">
                     <span className="h-8 w-8 shrink-0 grid place-items-center rounded-full bg-blue-100 text-blue-700 font-black">{i + 1}</span>
                     <div className="flex-1">
                       <Link href={`/products/${m.slug}`} className="font-semibold text-slate-900 hover:text-blue-600 transition">{m.name}</Link>
@@ -72,7 +72,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           </div>
 
           <aside className="lg:col-span-1">
-            <div className="lg:sticky lg:top-24 rounded-2xl border border-blue-200 bg-white p-6 shadow-md">
+            <div className="lg:sticky lg:top-24 rounded-2xl border border-[#BCD5F5] bg-slate-50 p-6 shadow-md hover:border-[#6FA5E6] transition-all">
               <h3 className="font-bold text-slate-900 text-lg">Get a turnkey quote</h3>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               <p className="mt-1 text-sm text-slate-600">Share your target output (BPM/LPH) and budget — we'll design the line and reply within 24 hours.</p>

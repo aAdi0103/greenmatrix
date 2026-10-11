@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             <section className="mt-10">
               <h2 className="text-xl font-bold text-slate-900">Technical specifications</h2>
-              <div className="mt-4 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
+              <div className="mt-4 overflow-hidden rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs hover:border-[#6FA5E6] transition-all">
                 <table className="w-full text-sm">
                   <tbody>
                     {p.specs.map((s, i) => (
@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <h2 className="text-xl font-bold text-slate-900">Pairs with</h2>
                 <div className="mt-4 grid sm:grid-cols-3 gap-4">
                   {related.map((r) => r && (
-                    <Link key={r.slug} href={`/products/${r.slug}`} className="rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-md transition">
+                    <Link key={r.slug} href={`/products/${r.slug}`} className="rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] hover:shadow-md transition">
                       <div className="text-[11px] uppercase font-semibold text-sky-600">{r.stage}</div>
                       <div className="mt-1 font-semibold text-sm leading-snug text-slate-900">{r.name}</div>
                     </Link>
@@ -110,7 +110,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           {/* Sticky enquire */}
           <aside className="lg:col-span-1">
-            <div className="lg:sticky lg:top-24 rounded-2xl border border-blue-200 bg-white p-6 shadow-md">
+            <div className="lg:sticky lg:top-24 rounded-2xl border border-[#BCD5F5] bg-slate-50 p-6 shadow-md hover:border-[#6FA5E6] transition-all">
               <div className="text-sm font-medium text-slate-500">Capacity</div>
               <div className="text-2xl font-black text-brand">{p.capacity}</div>
               <h3 className="mt-5 font-bold text-slate-900">Enquire about this machine</h3>

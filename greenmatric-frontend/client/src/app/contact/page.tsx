@@ -20,23 +20,23 @@ export default function ContactPage() {
         <Container className="grid lg:grid-cols-2 gap-12">
           <div>
             <div className="space-y-4 text-sm">
-              <a href={`tel:${CONTACT.phonePrimary}`} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-sm transition">
+              <a href={`tel:${CONTACT.phonePrimary}`} className="flex items-center gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] hover:shadow-sm transition">
                 <span className="text-brand text-xl">📞</span>
                 <div><div className="font-semibold text-slate-900">Call</div><div className="text-slate-600">{CONTACT.phonePrimary} · {CONTACT.phoneSecondary} · {CONTACT.phoneTertiary}</div></div>
               </a>
-              <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-sm transition">
+              <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" className="flex items-center gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] hover:shadow-sm transition">
                 <span className="text-blue-600 text-xl">💬</span>
                 <div><div className="font-semibold text-slate-900">WhatsApp</div><div className="text-slate-600">Chat with sales</div></div>
               </a>
-              <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4 hover:border-blue-400 hover:shadow-sm transition">
+              <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] hover:shadow-sm transition">
                 <span className="text-brand text-xl">✉️</span>
                 <div><div className="font-semibold text-slate-900">Email</div><div className="text-slate-600">{CONTACT.email}</div></div>
               </a>
-              <div className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] transition">
                 <span className="text-brand text-xl">📍</span>
                 <div><div className="font-semibold text-slate-900">Head office — Bokaro</div><div className="text-slate-600">{CONTACT.address}</div></div>
               </div>
-              <div className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white shadow-xs p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] transition">
                 <span className="text-brand text-xl">📍</span>
                 <div><div className="font-semibold text-slate-900">Branch office — Faridabad</div><div className="text-slate-600">{CONTACT.address2}</div></div>
               </div>

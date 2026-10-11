@@ -24,7 +24,7 @@ export default function ClientsPage() {
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {CLIENTS.map((c, i) => (
-              <div key={`${c}-${i}`} className="grid place-items-center rounded-xl border border-slate-200 bg-white shadow-xs p-6 text-center font-semibold text-slate-800 hover:border-blue-400 hover:shadow-sm transition">
+              <div key={`${c}-${i}`} className="grid place-items-center rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-6 text-center font-semibold text-slate-800 hover:border-[#6FA5E6] hover:bg-slate-100 hover:shadow-sm transition">
                 {c}
               </div>
             ))}
@@ -33,7 +33,7 @@ export default function ClientsPage() {
 
           <div className="mt-14 grid sm:grid-cols-3 gap-5">
             {SNAPSHOTS.map((s) => (
-              <div key={s.t} className="rounded-2xl border border-slate-200 bg-white shadow-xs p-6">
+              <div key={s.t} className="rounded-2xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-6 hover:shadow-sm hover:border-[#6FA5E6] transition">
                 <h3 className="font-bold text-slate-900">{s.t}</h3>
                 <p className="mt-2 text-sm text-slate-600">{s.d}</p>
               </div>
