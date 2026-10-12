@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { NAV } from "@/content/site";
+import { NAV, CONTACT } from "@/content/site";
 import { BrandLogo } from "./BrandLogo";
 import { useQuote } from "@/context/quote";
 
@@ -87,13 +87,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Main Office */}
+          {/* Column 3: Corporate Office */}
           <div className="shrink-0 max-w-xs">
             <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
-              MAIN OFFICE
+              CORPORATE OFFICE
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
-              <p className="font-semibold text-white">Green Matrix</p>
+              <p className="font-semibold text-white">Greenmatrix</p>
               <p className="text-slate-400 leading-relaxed">
                 Omaxe World Street, SCO No. 221, First Floor,
                 <br />
@@ -108,11 +108,11 @@ export function Footer() {
                   <span className="text-sky-300 font-medium">+91 91109 92936</span>
                 </a>
                 <a
-                  href="mailto:galaxysolutionsind@gmail.com"
+                  href={`mailto:${CONTACT.email}`}
                   className="block text-slate-300 hover:text-white transition-colors mt-1.5 break-all"
                 >
                   <span className="text-slate-400">Email: </span>
-                  <span className="text-sky-300 font-medium">galaxysolutionsind@gmail.com</span>
+                  <span className="text-sky-300 font-medium">{CONTACT.email}</span>
                 </a>
               </div>
               <p className="pt-2 text-slate-400">
@@ -121,13 +121,13 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 4: Branch Office */}
+          {/* Column 4: Regd. Office */}
           <div className="shrink-0 max-w-xs">
             <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
-              BRANCH OFFICE
+              REGD. OFFICE
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
-              <p className="font-semibold text-white">Green Matrix</p>
+              <p className="font-semibold text-white">Greenmatrix</p>
               <p className="text-slate-400 leading-relaxed">
                 Telidih Road, Chas,
                 <br />
@@ -142,11 +142,11 @@ export function Footer() {
                   <span className="text-sky-300 font-medium">+91-9852625103</span>
                 </a>
                 <a
-                  href="mailto:galaxysolutionsind@gmail.com"
+                  href={`mailto:${CONTACT.email}`}
                   className="block text-slate-300 hover:text-white transition-colors mt-1.5 break-all"
                 >
                   <span className="text-slate-400">Email: </span>
-                  <span className="text-sky-300 font-medium">galaxysolutionsind@gmail.com</span>
+                  <span className="text-sky-300 font-medium">{CONTACT.email}</span>
                 </a>
               </div>
               <p className="pt-2 text-slate-400">

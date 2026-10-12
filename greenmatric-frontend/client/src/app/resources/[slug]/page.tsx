@@ -48,7 +48,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div className="mt-12 rounded-2xl border border-blue-200 bg-white p-8 text-center shadow-sm">
           <h2 className="text-xl font-black text-slate-900">Planning your plant?</h2>
           <p className="mt-2 text-slate-600">Get a turnkey quote within 24 hours.</p>
-          <div className="mt-4"><EnquireButton>Get a Quote</EnquireButton></div>
+          <div className="mt-4"><EnquireButton>Get A Quotation</EnquireButton></div>
         </div>
       </Container>
     </article>

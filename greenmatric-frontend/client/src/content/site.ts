@@ -12,7 +12,7 @@ export const CONTACT = {
   phoneSecondary: "+917667113766",
   phoneTertiary: "+919470577684",
   whatsapp: "919110992936",
-  email: "greenmatrixind@gmail.com",
+  email: "info@greenmatrix.co.in",
   address: "Telidih Road, Chas, Bokaro, Jharkhand, India — 827013",
   address2: "SCO No 221, First Floor, Omaxe World Street, Sector 79, Faridabad, Haryana 121004",
   city: "Bokaro",
@@ -24,6 +24,7 @@ export const SOCIAL = {
 };
 
 export const NAV = [
+  { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
   { label: "Solutions", href: "/solutions" },
   { label: "Resources", href: "/resources" },
@@ -55,6 +56,6 @@ export const ASSETS = {
 export const WHY = [
   { title: "In-house Manufacturing", body: "Most components built in-house for quality, cost control and faster turnaround." },
   { title: "95%+ Spares Availability", body: "5,000+ spare parts stocked — support even for machines built back in 2012." },
-  { title: "Pan-India Presence", body: "Installed and serviced across 14 states, from Jharkhand to Bangalore." },
+  { title: "Pan-India Presence", body: "Installed and serviced PAN India and globe" },
   { title: "ISO 9001:2015", body: "Quality-certified processes, BIS/WHO-compliant water systems." },
 ];

@@ -10,15 +10,14 @@ import { useQuote } from "@/context/quote";
 import { storageUrl } from "@/lib/storage";
 
 const STATS = [
-  { n: "14", l: "States served" },
-  { n: `${PRODUCTS.length}`, l: "Machine lines" },
+  { n: "PAN India", l: "and Globe" },
   { n: "5,000+", l: "Spares stocked" },
   { n: "95%+", l: "Availability" },
 ];
 
 // Real Greenmatrix machine photos for the hero (from Supabase Storage).
 const HERO_MAIN = storageUrl("products/water-rfc/main.jpg");
-const HERO_THUMBS = ["water-purification", "bopp-label-machine", "shrink-wrapping"].map(
+const HERO_THUMBS = ["water-purification", "rotary-bopp-labeler", "shrink-wrapping"].map(
   (s) => ({ slug: s, url: storageUrl(`products/${s}/main.jpg`) }),
 );
 
@@ -51,10 +50,10 @@ export default function Home() {
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
               className="mt-8 flex flex-wrap gap-3">
-              <Button onClick={() => openQuote()}>Get a Quote</Button>
+              <Button onClick={() => openQuote()}>Get A Quotation</Button>
               <Button href="/products" variant="outline">View Products</Button>
             </motion.div>
-            <div className="mt-12 grid grid-cols-4 gap-4 max-w-lg">
+            <div className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
               {STATS.map((s, i) => (
                 <motion.div key={s.l} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.1 }}>
                   <div className="text-2xl font-black text-brand">{s.n}</div>

@@ -15,7 +15,7 @@ export default function ProductsPage() {
 
   return (
     <>
-      <PageHero eyebrow="Products" title={`${PRODUCTS.length} machines for the full bottling line`}
+      <PageHero eyebrow="Products" title="Machines for the full bottling line"
         subtitle="From water treatment to filling, labeling, packing and handling. Filter by line stage." />
       <Section>
         <Container>

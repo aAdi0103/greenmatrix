@@ -117,7 +117,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <p className="mt-1 text-sm text-slate-600">Get a quote with specs and lead time. We reply within 24 hours.</p>
               <div className="mt-4 flex flex-col gap-2">
                 <EnquireButton product={p.name} capacity={p.capacity}>Enquire now</EnquireButton>
-                <EnquireButton product={p.name} capacity={p.capacity} variant="outline">Get a Quote</EnquireButton>
+                <EnquireButton product={p.name} capacity={p.capacity} variant="outline">Get A Quotation</EnquireButton>
               </div>
             </div>
           </aside>

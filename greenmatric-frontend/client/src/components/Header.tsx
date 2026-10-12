@@ -18,7 +18,7 @@ export function Header() {
           </div>
           <span className="font-bold tracking-tight text-lg text-white">{BRAND}</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium">
           {NAV.map((n) => (
             <Link
               key={n.href}
@@ -34,7 +34,7 @@ export function Header() {
             onClick={() => openQuote()}
             className="hidden sm:inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#172749] shadow-sm hover:bg-slate-100 hover:shadow transition duration-150"
           >
-            Get a Quote
+            Get A Quotation
           </button>
           <button
             onClick={() => setOpen(!open)}
@@ -68,7 +68,7 @@ export function Header() {
             }}
             className="mt-2 w-full rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#172749] shadow-sm hover:bg-slate-100 transition"
           >
-            Get a Quote
+            Get A Quotation
           </button>
         </div>
       )}

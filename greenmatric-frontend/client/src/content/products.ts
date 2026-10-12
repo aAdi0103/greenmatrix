@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
     ],
     industries: ["Packaged drinking water", "Soft drinks", "RTD beverages", "Juice"],
     images: [],
-    pairsWith: ["water-purification", "bopp-label-machine", "shrink-wrapping", "conveying"],
+    pairsWith: ["water-purification", "rotary-bopp-labeler", "shrink-wrapping", "conveying"],
     seo: {
       title: "Automatic Water RFC — Rinser Filler Capper (40–400 BPM)",
       description: "PLC-controlled rinser-filler-capper for water and RTD beverages, 40–400 BPM, bottom-fill for precise levels and hygienic operation.",
@@ -61,7 +61,7 @@ export const PRODUCTS: Product[] = [
     slug: "rotary-bopp-labeler",
     name: "Automatic Rotary BOPP Labeling Machine",
     stage: "labeling",
-    capacity: "up to 24,000 BPH",
+    capacity: "40–400 BPM",
     valueLine: "High-speed rotary BOPP labeling — S-curve and drum in a single pass with ±0.5–1 mm accuracy.",
     features: [
       "Advanced PLC-based control system",
@@ -72,7 +72,7 @@ export const PRODUCTS: Product[] = [
       "Advanced gluing: glue tank, spray nozzles, slot-die technology",
     ],
     specs: [
-      { label: "Output", value: "Up to 24,000 BPH" },
+      { label: "Output", value: "40–400 BPM" },
       { label: "Accuracy", value: "±0.5–1 mm" },
       { label: "Construction", value: "Stainless steel" },
       { label: "Control", value: "PLC" },
@@ -82,38 +82,8 @@ export const PRODUCTS: Product[] = [
     images: [],
     pairsWith: ["water-rfc", "conveying", "shrink-wrapping"],
     seo: {
-      title: "Automatic Rotary BOPP Labeler — up to 24,000 BPH",
-      description: "Rotary BOPP labeling machine, S-curve + drum in one pass, ±0.5–1 mm accuracy, up to 24,000 bottles per hour.",
-    },
-  },
-  {
-    slug: "bopp-label-machine",
-    name: "BOPP Label Machine (Nordson)",
-    stage: "labeling",
-    capacity: "20–300 BPM",
-    valueLine: "Fully automatic hot-melt BOPP labeling with Nordson glue system and Trio motion control.",
-    features: [
-      "Nordson (USA) recirculating hot-melt system with low-air protection",
-      "Servo label cutting with Trio Motion Controller (UK)",
-      "Siemens 3 HP AC variable-speed main drive with frequency drive",
-      "Motion-controller system with VFD, servo drives and HMI",
-      "Blower-type vacuum pump",
-      "SS-cladded mainframe with safety guarding",
-    ],
-    specs: [
-      { label: "Capacity", value: "20–300 BPM" },
-      { label: "Label cutting", value: "Servo, Trio Motion (UK)" },
-      { label: "Conveyor height", value: "900–1050 mm" },
-      { label: "Conveyor length", value: "3.0 m infeed to discharge" },
-      { label: "Electrical", value: "440V, 3-phase, 3 HP" },
-      { label: "Air", value: "80 PSI, 3 CFM, ½\" NP" },
-    ],
-    industries: ["Water", "Juice", "Soft drinks"],
-    images: [],
-    pairsWith: ["water-rfc", "conveying", "shrink-wrapping"],
-    seo: {
-      title: "BOPP Label Machine with Nordson Glue — 20–300 BPM",
-      description: "Fully automatic BOPP labeling with Nordson hot-melt and Trio servo cutting for water, juice and soft-drink bottles, 20–300 BPM.",
+      title: "Automatic Rotary BOPP Labeler — 40–400 BPM",
+      description: "Rotary BOPP labeling machine, S-curve + drum in one pass, ±0.5–1 mm accuracy, 40–400 BPM.",
     },
   },
   {
@@ -178,7 +148,7 @@ export const PRODUCTS: Product[] = [
     slug: "shrink-wrapping",
     name: "Automatic Shrink Wrapping Machine",
     stage: "packing",
-    capacity: "2–20 PPM",
+    capacity: "3-30 boxes",
     valueLine: "Linear, single- and multi-track shrink wrapping with auto-collation up to 20 packs/min.",
     features: [
       "Linear, single-track and multi-track models",
@@ -189,7 +159,7 @@ export const PRODUCTS: Product[] = [
       "Motion-controller system, SS wire-mesh conveyor",
     ],
     specs: [
-      { label: "Output", value: "2–20 PPM" },
+      { label: "Output", value: "3-30 boxes" },
       { label: "Pack sizes", value: "6 / 12 / 18 / 24 / 36 / 40" },
       { label: "Construction", value: "MS or SS" },
       { label: "Control", value: "Motion controller" },
@@ -199,7 +169,7 @@ export const PRODUCTS: Product[] = [
     images: [],
     pairsWith: ["conveying", "water-rfc"],
     seo: {
-      title: "Automatic Shrink Wrapping Machine — 2–20 PPM",
+      title: "Automatic Shrink Wrapping Machine — 3-30 boxes",
       description: "Linear/multi-track shrink wrapping, pack sizes 6–40, auto-collation up to 20 packs per minute, MS or SS build.",
     },
   },
@@ -252,38 +222,10 @@ export const PRODUCTS: Product[] = [
     ],
     industries: ["Packaged water", "Soft drinks", "Pharma", "Institutions"],
     images: [],
-    pairsWith: ["water-rfc", "jar-line"],
+    pairsWith: ["water-rfc"],
     seo: {
       title: "Water Purification System — 1,000–50,000 LPH",
       description: "Turnkey BIS/WHO-compliant water purification, SS 304L/316, with ozonator, UV and integrated CIP for the bottled water industry.",
-    },
-  },
-  {
-    slug: "jar-line",
-    name: "Bulk Jar Rinsing & Filling (20L)",
-    stage: "filling",
-    capacity: "120–1,200 JPH",
-    valueLine: "7-stage jar washing plus rotary fill-foil-cap for 20-litre jars, fully stainless.",
-    features: [
-      "Automatic 7-stage jar washing with external brushing",
-      "Available in 1, 2 and 4-wide configurations",
-      "Bobbin heaters in zones 2 & 3 with electronic temp control",
-      "4, 8 and 12-head rotary filling, foiling and capping",
-      "Full stainless steel, all product-contact parts in SS",
-    ],
-    specs: [
-      { label: "Speed", value: "120–1,200 JPH" },
-      { label: "Jar", value: "20 litre" },
-      { label: "Washing", value: "7-stage + external brushing" },
-      { label: "Filling heads", value: "4 / 8 / 12 rotary" },
-      { label: "Construction", value: "Stainless steel" },
-    ],
-    industries: ["20L jar water", "Institutional water"],
-    images: [],
-    pairsWith: ["water-purification"],
-    seo: {
-      title: "Bulk 20L Jar Rinsing & Filling — 120–1,200 JPH",
-      description: "7-stage 20L jar washing plus 4/8/12-head rotary filling, foiling and capping, 120–1,200 jars per hour.",
     },
   },
   {
@@ -331,7 +273,7 @@ export const SOLUTIONS = [
     slug: "csd-line",
     name: "CSD / Soft Drink Line",
     desc: "Carbonated soft-drink filling, labeling and packing, end to end.",
-    machines: ["water-rfc", "bopp-label-machine", "shrink-wrapping", "conveying"],
+    machines: ["water-rfc", "rotary-bopp-labeler", "shrink-wrapping", "conveying"],
   },
   {
     slug: "juice-line",
@@ -343,7 +285,7 @@ export const SOLUTIONS = [
     slug: "jar-line",
     name: "20L Jar Line",
     desc: "Bulk jar washing, filling, foiling and capping — 120–1,200 JPH.",
-    machines: ["water-purification", "jar-line", "conveying"],
+    machines: ["water-purification", "conveying"],
   },
 ];
 

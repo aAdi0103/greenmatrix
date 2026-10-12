@@ -78,7 +78,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
               <p className="mt-1 text-sm text-slate-600">Share your target output (BPM/LPH) and budget — we'll design the line and reply within 24 hours.</p>
               <div className="mt-4 flex flex-col gap-2">
                 <EnquireButton product={`${s.name} (turnkey line)`}>Plan my line</EnquireButton>
-                <EnquireButton product={`${s.name} (turnkey line)`} variant="outline">Get a Quote</EnquireButton>
+                <EnquireButton product={`${s.name} (turnkey line)`} variant="outline">Get A Quotation</EnquireButton>
               </div>
             </div>
           </aside>
