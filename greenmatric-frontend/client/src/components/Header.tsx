@@ -13,10 +13,10 @@ export function Header() {
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#172749]/95 border-b border-[#0e1930] shadow-sm">
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-black p-0.5 shadow-sm ring-1 ring-white/20 overflow-hidden">
-            <BrandLogo className="h-full w-full object-contain" />
+          <div className="h-10 w-10 shrink-0 rounded-lg overflow-hidden shadow-sm ring-1 ring-white/20">
+            <BrandLogo className="h-full w-full object-cover" />
           </div>
-          <span className="font-bold tracking-tight text-lg text-white">{BRAND}</span>
+          <span className="font-bold tracking-tight text-base sm:text-lg text-white">{BRAND}</span>
         </Link>
         <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium">
           {NAV.map((n) => (

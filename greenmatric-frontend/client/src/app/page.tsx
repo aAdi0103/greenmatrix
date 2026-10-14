@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { BRAND, LEGAL_NAME, ISO, CLIENTS, WHY } from "@/content/site";
+import { BRAND, LEGAL_NAME, ISO, CLIENTS, CLIENT_LOGOS, WHY } from "@/content/site";
 import { PRODUCTS, STAGES, SOLUTIONS, type Stage } from "@/content/products";
 import { Container, Section, Reveal, Button, Card, SectionHeading } from "@/components/ui";
 import { useQuote } from "@/context/quote";
 import { storageUrl } from "@/lib/storage";
 
 const STATS = [
-  { n: "PAN India", l: "and Globe" },
+  { n: "PAN India", l: "and globally" },
   { n: "5,000+", l: "Spares stocked" },
   { n: "95%+", l: "Availability" },
 ];
@@ -66,13 +66,13 @@ export default function Home() {
             <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={HERO_MAIN} alt="Greenmatrix bottling plant — automatic filling line" className="w-full h-auto object-cover" />
+              <img src={HERO_MAIN} alt="Greenmatrix Industry Pvt. Ltd. bottling plant — automatic filling line" className="w-full h-auto object-cover" />
             </motion.div>
             <div className="mt-3 grid grid-cols-3 gap-3">
               {HERO_THUMBS.map((t) => (
                 <Link key={t.slug} href={`/products/${t.slug}`} className="rounded-xl overflow-hidden border border-[#BCD5F5] bg-slate-50 hover:border-[#6FA5E6] shadow-xs transition">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.url} alt="Greenmatrix machine" className="h-20 w-full object-cover" />
+                  <img src={t.url} alt="Greenmatrix Industry Pvt. Ltd. machine" className="h-20 w-full object-cover" />
                 </Link>
               ))}
             </div>
@@ -81,13 +81,24 @@ export default function Home() {
       </section>
 
       {/* Trust marquee */}
-      <section className="py-10 border-y border-slate-200 bg-white">
-        <p className="text-center text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold mb-6">Trusted by PSUs, schools &amp; water brands</p>
+      <section className="py-12 sm:py-14 border-y border-slate-200 bg-white">
+        <p className="text-center text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold mb-8">Trusted by PSUs, schools &amp; water brands</p>
         <div className="relative overflow-hidden">
-          <motion.div className="flex gap-10 whitespace-nowrap will-change-transform"
-            animate={{ x: ["0%", "-50%"] }} transition={{ duration: 22, repeat: Infinity, ease: "linear" }}>
-            {[...CLIENTS, ...CLIENTS].map((c, i) => (
-              <span key={i} className="text-lg font-semibold text-slate-700">{c}</span>
+          <motion.div className="flex items-center gap-12 sm:gap-16 whitespace-nowrap will-change-transform"
+            animate={{ x: ["0%", "-50%"] }} transition={{ duration: 32, repeat: Infinity, ease: "linear" }}>
+            {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((c, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center shrink-0"
+                title={c.name}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={c.logo}
+                  alt={c.name}
+                  className="h-16 sm:h-20 lg:h-24 w-auto max-w-[180px] sm:max-w-[220px] object-contain transition-transform duration-200 hover:scale-105"
+                />
+              </div>
             ))}
           </motion.div>
         </div>

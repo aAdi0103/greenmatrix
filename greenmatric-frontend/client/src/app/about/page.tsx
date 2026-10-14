@@ -3,7 +3,7 @@ import { BRAND, LEGAL_NAME, ISO } from "@/content/site";
 import { Container, Section } from "@/components/ui";
 import { PageHero } from "@/components/PageHero";
 import { EnquireButton } from "@/components/EnquireButton";
-import { Droplets, Workflow, Cog, Headset, ShieldCheck } from "lucide-react";
+import { Droplets, Workflow, Cog, Headset, ShieldCheck, Wind, Droplet, Tag, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About & Mission",
@@ -20,7 +20,7 @@ const MISSION = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="About" title={`${BRAND} Industry Pvt. Ltd.`} />
+      <PageHero eyebrow="About" title={BRAND} />
       <Section>
         <Container className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-8 text-slate-600">
@@ -34,7 +34,7 @@ export default function AboutPage() {
               </div>
               <div className="mt-4 space-y-3 leading-relaxed text-slate-600">
                 <p>
-                  GreenMatrix Industry Pvt. Ltd. is an emerging and integrated Water &amp; Wastewater Treatment Solutions Company, providing end-to-end solutions in the field of water purification, treatment, recycling, and water infrastructure.
+                  Greenmatrix Industry Pvt. Ltd. is an emerging and integrated Water &amp; Wastewater Treatment Solutions Company, providing end-to-end solutions in the field of water purification, treatment, recycling, and water infrastructure.
                 </p>
                 <p>
                   With a strong focus on engineering, design, manufacturing, installation and after-sales services, the company offers customized water treatment solutions for residential, commercial, industrial, institutional and government applications.
@@ -55,6 +55,10 @@ export default function AboutPage() {
                   <li className="flex items-center gap-2.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#0284c7] shrink-0" />
                     <span>RO Water Purification Systems</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#0284c7] shrink-0" />
+                    <span>Water Bottling Turnkey project manufacturing</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#0284c7] shrink-0" />
@@ -128,15 +132,15 @@ export default function AboutPage() {
                 <div className="h-1 w-16 bg-[#0284c7] rounded-full mt-1.5" />
               </div>
               <p className="mt-4 leading-relaxed text-slate-600">
-                To become a trusted and professionally managed company providing innovative, reliable and sustainable water treatment solutions across India.
+                To become a trusted and professionally managed company providing innovative, reliable and sustainable water treatment solutions across PAN India and globally.
               </p>
             </div>
 
-            {/* Why Greenmatrix? */}
+            {/* Why Greenmatrix Industry Pvt. Ltd.? */}
             <div>
               <div className="inline-block">
                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#0369a1] uppercase">
-                  Why Greenmatrix?
+                  Why Greenmatrix Industry Pvt. Ltd.?
                 </h2>
                 <div className="h-1 w-20 bg-[#0284c7] rounded-full mt-1.5" />
               </div>
@@ -151,6 +155,42 @@ export default function AboutPage() {
                     </div>
                     <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 uppercase">
                       Complete Water Solutions
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#0284c7] bg-blue-50/80 text-[#0284c7]">
+                      <Wind className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 uppercase">
+                      Blowing
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#0284c7] bg-blue-50/80 text-[#0284c7]">
+                      <Droplet className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 uppercase">
+                      Water Filling
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#0284c7] bg-blue-50/80 text-[#0284c7]">
+                      <Tag className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 uppercase">
+                      Labelling
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3.5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#0284c7] bg-blue-50/80 text-[#0284c7]">
+                      <Package className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold tracking-wide text-slate-800 uppercase">
+                      Packaging
                     </span>
                   </div>
 
@@ -201,7 +241,7 @@ export default function AboutPage() {
             </div>
             <div className="rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-5 hover:border-[#6FA5E6] transition-all">
               <div className="font-semibold text-slate-900 mb-1">Pan-India Presence</div>
-              <p className="text-sm text-slate-600">Installed and serviced PAN India and globe</p>
+              <p className="text-sm text-slate-600">Installed and serviced PAN India and globally</p>
             </div>
           </div>
         </Container>
@@ -262,7 +302,7 @@ export default function AboutPage() {
               OUR LEADERSHIP
             </h2>
             <p className="mt-4 text-base sm:text-lg lg:text-xl text-slate-700 max-w-2xl mx-auto leading-relaxed">
-              GreenMatrix Industry Pvt. Ltd. is led by a team of three Directors with complementary experience and expertise
+              Greenmatrix Industry Pvt. Ltd. is led by a team of three Directors with complementary experience and expertise
             </p>
           </div>
         </div>

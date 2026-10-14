@@ -5,7 +5,7 @@ import { EnquireButton } from "@/components/EnquireButton";
 
 export const metadata: Metadata = {
   title: "Industries Served",
-  description: "Greenmatrix serves packaged water, soft drinks, juice/RTD, pharma, dairy, institutions and government supply projects.",
+  description: "Greenmatrix Industry Pvt. Ltd. serves packaged water, soft drinks, juice/RTD, pharma, dairy, institutions and government supply projects.",
 };
 
 const INDUSTRIES = [

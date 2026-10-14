@@ -149,13 +149,13 @@ export const PRODUCTS: Product[] = [
     name: "Automatic Shrink Wrapping Machine",
     stage: "packing",
     capacity: "3-30 boxes",
-    valueLine: "Linear, single- and multi-track shrink wrapping with auto-collation up to 20 packs/min.",
+    valueLine: "Linear, single- and multi-track shrink wrapping with auto-collation up to 30 packs/min.",
     features: [
       "Linear, single-track and multi-track models",
       "Manual collation with partial \"U\" sealing system",
       "Pack sizes 6, 12, 18, 24, 36, 40 (with/without tray)",
       "Available in MS or SS construction",
-      "Auto-collation option up to 20 PPM",
+      "Auto-collation option up to 30 PPM",
       "Motion-controller system, SS wire-mesh conveyor",
     ],
     specs: [
@@ -170,7 +170,7 @@ export const PRODUCTS: Product[] = [
     pairsWith: ["conveying", "water-rfc"],
     seo: {
       title: "Automatic Shrink Wrapping Machine — 3-30 boxes",
-      description: "Linear/multi-track shrink wrapping, pack sizes 6–40, auto-collation up to 20 packs per minute, MS or SS build.",
+      description: "Linear/multi-track shrink wrapping, pack sizes 6–40, auto-collation up to 30 packs per minute, MS or SS build.",
     },
   },
   {
@@ -248,12 +248,12 @@ export const PRODUCTS: Product[] = [
       { label: "Support", value: "Models back to 2012" },
       { label: "Source", value: "Genuine OEM" },
     ],
-    industries: ["All Greenmatrix machines"],
+    industries: ["All Greenmatrix Industry Pvt. Ltd. machines"],
     images: [],
     pairsWith: [],
     seo: {
       title: "Spares & Service Network — 95%+ Availability",
-      description: "5,000+ genuine OEM spares with 95%+ availability and fast dispatch, supporting Greenmatrix machines back to 2012.",
+      description: "5,000+ genuine OEM spares with 95%+ availability and fast dispatch, supporting Greenmatrix Industry Pvt. Ltd. machines back to 2012.",
     },
   },
 ];

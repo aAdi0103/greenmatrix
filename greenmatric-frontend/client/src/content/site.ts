@@ -2,8 +2,8 @@
 // Contact from brochure/PPT; assets from existing greenmatrix.co.in for now.
 // Q-01: lead with "Greenmatrix" (single constant for easy swap).
 
-export const BRAND = "Greenmatrix";
-export const LEGAL_NAME = "Greenmatrix Industry Private Limited";
+export const BRAND = "Greenmatrix Industry Pvt. Ltd.";
+export const LEGAL_NAME = "Greenmatrix Industry Pvt. Ltd.";
 export const TAGLINE = "Complete Bottle Packaging & Water Treatment Solutions";
 export const ISO = "ISO 9001:2015 Certified";
 
@@ -33,12 +33,33 @@ export const NAV = [
   { label: "Contact", href: "/contact" },
 ];
 
-// Marquee PSU / institutional clients (from brochure + PPT).
-export const CLIENTS = [
-  "CISF", "CRPF", "IndianOil", "SAIL", "Jharkhand Police",
-  "DAV Public School", "Bokaro Public School", "Holy Cross School",
-  "Saint Joseph's School", "Aquapey", "Zestera",
+export interface ClientItem {
+  name: string;
+  logo: string;
+}
+
+export const CLIENT_LOGOS: ClientItem[] = [
+  { name: "CISF", logo: "/client_image/CISF.jpeg" },
+  { name: "CRPF", logo: "/client_image/CRPF.jpeg" },
+  { name: "Jharkhand Police", logo: "/client_image/Jarkhand_police.jpeg" },
+  { name: "DAV Public School", logo: "/client_image/DAV_Public_school.jpeg" },
+  { name: "Delhi Public School", logo: "/client_image/Delhi_Public_school.jpeg" },
+  { name: "Bokaro Public School", logo: "/client_image/Bokaro_Public_School.jpeg" },
+  { name: "Holy Cross School", logo: "/client_image/Holy_cross.png" },
+  { name: "Saint Joseph's School", logo: "/client_image/Saint_Joshep_School.jpeg" },
+  { name: "St Thomas School", logo: "/client_image/Saint_Thomas_school.jpeg" },
+  { name: "MGM", logo: "/client_image/MGM.jpeg" },
+  { name: "Sree Ayyappa Public School", logo: "/client_image/sree_ayyappa_school.jpeg" },
+  { name: "Aquapey", logo: "/client_image/Aquapey.jpeg" },
+  { name: "Zestera", logo: "/client_image/Zestera.jpeg" },
+  { name: "Aquafrisch", logo: "/client_image/aquafrisch.jpeg" },
+  { name: "Aquaverve", logo: "/client_image/aquaverve.jpeg" },
+  { name: "Buddhaqua", logo: "/client_image/buddhaqua.jpeg" },
+  { name: "Goodsoul", logo: "/client_image/goodsoul.jpeg" },
+  { name: "Huntwater", logo: "/client_image/huntwater.jpeg" },
 ];
+
+export const CLIENTS = CLIENT_LOGOS.map((c) => c.name);
 
 // 14-state presence (PPT "Our Presence").
 export const PRESENCE = [
@@ -49,13 +70,13 @@ export const PRESENCE = [
 
 // Assets pulled from existing site (placeholders until real assets arrive).
 export const ASSETS = {
-  logo: "/logo_1.svg",
+  logo: "/greenmatrix logo.jpg",
   hero: "https://greenmatrix.co.in/wp-content/uploads/2024/01/Water-Treatment-Plants.jpg",
 };
 
 export const WHY = [
   { title: "In-house Manufacturing", body: "Most components built in-house for quality, cost control and faster turnaround." },
   { title: "95%+ Spares Availability", body: "5,000+ spare parts stocked — support even for machines built back in 2012." },
-  { title: "Pan-India Presence", body: "Installed and serviced PAN India and globe" },
+  { title: "Pan-India Presence", body: "Installed and serviced PAN India and globally" },
   { title: "ISO 9001:2015", body: "Quality-certified processes, BIS/WHO-compliant water systems." },
 ];

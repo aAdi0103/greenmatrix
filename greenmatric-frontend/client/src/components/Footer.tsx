@@ -45,11 +45,11 @@ export function Footer() {
           {/* Column 1: Brand & Statement */}
           <div className="space-y-4 max-w-sm lg:w-[32%]">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-black p-0.5 shadow-sm ring-1 ring-white/20 overflow-hidden">
-                <BrandLogo className="h-full w-full object-contain" />
+              <div className="h-10 w-10 shrink-0 rounded-lg overflow-hidden shadow-sm ring-1 ring-white/20">
+                <BrandLogo className="h-full w-full object-cover" />
               </div>
               <span className="font-extrabold text-base tracking-wide text-white">
-                GREENMATRIX INDUSTRY
+                Greenmatrix Industry Pvt. Ltd.
               </span>
             </div>
             <p className="text-xs font-medium text-slate-200 leading-snug">
@@ -60,7 +60,7 @@ export function Footer() {
                 Brand Statement:
               </span>
               <p className="mt-1 text-xs text-slate-400 leading-relaxed">
-                At Greenmatrix Industry, we blend advanced water purification engineering with heavy-duty packaging automation to empower beverage entrepreneurs, defence facilities, and public sector projects across India. We deliver certified, future-ready water solutions that protect health, conserve resources, and advance the nation.
+                At Greenmatrix Industry Pvt. Ltd., we blend advanced water purification engineering with heavy-duty packaging automation to empower beverage entrepreneurs, defence facilities, and public sector projects across India. We deliver certified, future-ready water solutions that protect health, conserve resources, and advance the nation.
               </p>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-xs italic text-slate-300">
@@ -93,7 +93,7 @@ export function Footer() {
               CORPORATE OFFICE
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
-              <p className="font-semibold text-white">Greenmatrix</p>
+              <p className="font-semibold text-white">Greenmatrix Industry Pvt. Ltd.</p>
               <p className="text-slate-400 leading-relaxed">
                 Omaxe World Street, SCO No. 221, First Floor,
                 <br />
@@ -127,7 +127,7 @@ export function Footer() {
               REGD. OFFICE
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
-              <p className="font-semibold text-white">Greenmatrix</p>
+              <p className="font-semibold text-white">Greenmatrix Industry Pvt. Ltd.</p>
               <p className="text-slate-400 leading-relaxed">
                 Telidih Road, Chas,
                 <br />
@@ -160,7 +160,7 @@ export function Footer() {
 
       {/* Bottom Copyright Strip */}
       <div className="bg-[#142343] border-t border-blue-900/50 py-4 text-center text-xs text-slate-300">
-        © {new Date().getFullYear()} Greenmatrix Industry. All rights reserved. Registered Indian Engineering Organization.
+        © {new Date().getFullYear()} Greenmatrix Industry Pvt. Ltd. All rights reserved. Registered Indian Engineering Organization.
       </div>
     </footer>
   );

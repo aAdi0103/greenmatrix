@@ -32,7 +32,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     description: p.valueLine,
     image: poster,
     category: p.stage,
-    brand: { "@type": "Brand", name: "Greenmatrix" },
+    brand: { "@type": "Brand", name: "Greenmatrix Industry Pvt. Ltd." },
   };
 
   return (
