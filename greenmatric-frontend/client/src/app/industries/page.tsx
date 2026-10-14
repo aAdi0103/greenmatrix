@@ -24,7 +24,7 @@ export default function IndustriesPage() {
     <>
       <PageHero eyebrow="Industries" title="Industries we serve"
         subtitle="From packaged water to pharma and government supply — machines and turnkey lines tuned to each sector." />
-      <Section>
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24">
         <Container>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {INDUSTRIES.map((i) => (

@@ -17,7 +17,7 @@ export default function ProductsPage() {
     <>
       <PageHero eyebrow="Products" title="Machines for the full bottling line"
         subtitle="From water treatment to filling, labeling, packing and handling. Filter by line stage." />
-      <Section>
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24">
         <Container>
           <div className="flex flex-wrap gap-2">
             {[{ id: "all", label: "All" }, ...STAGES].map((s) => (
@@ -32,11 +32,11 @@ export default function ProductsPage() {
               <Reveal key={p.slug} i={i}>
                 <Card className="group h-full flex flex-col overflow-hidden !p-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={storageUrl(`products/${p.slug}/main.jpg`)} alt={p.name} className="h-44 w-full object-cover bg-slate-100" />
+                  <img src={storageUrl(p.images[0] ?? `products/${p.slug}/main.jpg`)} alt={p.name} className="h-44 w-full object-cover bg-slate-100" />
                   <div className="p-6 flex flex-col flex-1">
                     <div className="text-[11px] uppercase tracking-wide font-semibold text-sky-600">{p.stage}</div>
                     <Link href={`/products/${p.slug}`} className="mt-2 block font-bold text-lg text-slate-900 leading-snug hover:text-brand transition">{p.name}</Link>
-                    <p className="mt-2 text-sm text-slate-600 flex-1">{p.valueLine}</p>
+                    {p.valueLine ? <p className="mt-2 text-sm text-slate-600 flex-1">{p.valueLine}</p> : <div className="flex-1" />}
                     <div className="mt-4 flex items-center justify-between">
                       <span className="rounded-md bg-blue-50 border border-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">{p.capacity}</span>
                       <button onClick={() => openQuote({ product: p.name, capacity: p.capacity })} className="text-sm font-medium text-slate-600 hover:text-brand transition">Enquire →</button>

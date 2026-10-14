@@ -16,7 +16,7 @@ export default function ContactPage() {
     <>
       <PageHero eyebrow="Contact" title="Let's talk about your plant"
         subtitle="Machine enquiry or a full turnkey line — reach us any way you like. We reply within 24 hours." />
-      <Section>
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24">
         <Container className="grid lg:grid-cols-2 gap-12">
           <div>
             <div className="space-y-4 text-sm">
@@ -34,11 +34,11 @@ export default function ContactPage() {
               </a>
               <div className="flex items-start gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] transition">
                 <span className="text-brand text-xl">📍</span>
-                <div><div className="font-semibold text-slate-900">Head office — Bokaro</div><div className="text-slate-600">{CONTACT.address}</div></div>
+                <div><div className="font-semibold text-slate-900">Corporate Office — Faridabad</div><div className="text-slate-600">{CONTACT.address2}</div></div>
               </div>
               <div className="flex items-start gap-3 rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] transition">
                 <span className="text-brand text-xl">📍</span>
-                <div><div className="font-semibold text-slate-900">Branch office — Faridabad</div><div className="text-slate-600">{CONTACT.address2}</div></div>
+                <div><div className="font-semibold text-slate-900">Regd. Office — Bokaro</div><div className="text-slate-600">{CONTACT.address}</div></div>
               </div>
             </div>
             <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 shadow-xs">

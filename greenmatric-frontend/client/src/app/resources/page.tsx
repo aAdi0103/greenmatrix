@@ -18,7 +18,7 @@ export default async function ResourcesPage() {
     <>
       <PageHero eyebrow="Resources" title="Guides for starting & scaling a plant"
         subtitle="Cost, licence and capacity guides for entrepreneurs entering the water and beverage business." />
-      <Section>
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24">
         <Container>
           {articles.length === 0 ? (
             <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-10 text-center text-slate-500 shadow-xs">

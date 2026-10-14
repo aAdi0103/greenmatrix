@@ -50,48 +50,77 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div className="lg:col-span-2">
             <div className="text-xs uppercase tracking-[0.2em] font-semibold text-brand">{p.stage}</div>
             <h1 className="mt-2 text-3xl sm:text-4xl font-black tracking-tight text-slate-900">{p.name}</h1>
-            <p className="mt-4 text-lg text-slate-600">{p.valueLine}</p>
+            {p.valueLine && <p className="mt-4 text-lg text-slate-600">{p.valueLine}</p>}
 
-            <div className="mt-8 relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={poster} alt={p.name} className="w-full h-auto object-cover" />
-            </div>
-
-            <section className="mt-10">
-              <h2 className="text-xl font-bold text-slate-900">Key features</h2>
-              <ul className="mt-4 grid sm:grid-cols-2 gap-3">
-                {p.features.map((f) => (
-                  <li key={f} className="flex gap-2 text-sm text-slate-700">
-                    <span className="text-blue-600 font-bold">▸</span>{f}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mt-10">
-              <h2 className="text-xl font-bold text-slate-900">Technical specifications</h2>
-              <div className="mt-4 overflow-hidden rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs hover:border-[#6FA5E6] transition-all">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {p.specs.map((s, i) => (
-                      <tr key={s.label} className={i % 2 ? "bg-slate-50/70" : ""}>
-                        <td className="px-4 py-3 font-medium text-slate-900 w-1/3 border-b border-slate-100">{s.label}</td>
-                        <td className="px-4 py-3 text-slate-600 border-b border-slate-100">{s.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section className="mt-10">
-              <h2 className="text-xl font-bold text-slate-900">Application industries</h2>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.industries.map((ind) => (
-                  <span key={ind} className="rounded-full border border-blue-200 bg-blue-50/70 px-3 py-1 text-sm text-blue-800 font-medium">{ind}</span>
+            {p.gallery && p.gallery.length > 0 ? (
+              <div className="mt-8 grid sm:grid-cols-2 gap-6">
+                {p.gallery.map((item) => (
+                  <div
+                    key={item.title}
+                    className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-center"
+                  >
+                    <div className="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center p-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <h3 className="font-bold text-lg text-slate-900">{item.title}</h3>
+                    </div>
+                  </div>
                 ))}
               </div>
-            </section>
+            ) : (
+              <div className="mt-8 relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={poster} alt={p.name} className="w-full h-auto object-cover" />
+              </div>
+            )}
+
+            {p.features.length > 0 && (
+              <section className="mt-10">
+                <h2 className="text-xl font-bold text-slate-900">Key features</h2>
+                <ul className="mt-4 grid sm:grid-cols-2 gap-3">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex gap-2 text-sm text-slate-700">
+                      <span className="text-blue-600 font-bold">▸</span>{f}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {p.specs.length > 0 && (
+              <section className="mt-10">
+                <h2 className="text-xl font-bold text-slate-900">Technical specifications</h2>
+                <div className="mt-4 overflow-hidden rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs hover:border-[#6FA5E6] transition-all">
+                  <table className="w-full text-sm">
+                    <tbody>
+                      {p.specs.map((s, i) => (
+                        <tr key={s.label} className={i % 2 ? "bg-slate-50/70" : ""}>
+                          <td className="px-4 py-3 font-medium text-slate-900 w-1/3 border-b border-slate-100">{s.label}</td>
+                          <td className="px-4 py-3 text-slate-600 border-b border-slate-100">{s.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+
+            {p.industries.length > 0 && (
+              <section className="mt-10">
+                <h2 className="text-xl font-bold text-slate-900">Application industries</h2>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {p.industries.map((ind) => (
+                    <span key={ind} className="rounded-full border border-blue-200 bg-blue-50/70 px-3 py-1 text-sm text-blue-800 font-medium">{ind}</span>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {related.length > 0 && (
               <section className="mt-10">

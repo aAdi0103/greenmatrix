@@ -13,8 +13,9 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 }
 
 export function Section({ id, children, className = "" }: { id?: string; children: ReactNode; className?: string }) {
+  const hasPaddingY = /\b(py-|pt-|p-)/.test(className);
   return (
-    <section id={id} className={cn("py-20 sm:py-24", className)}>
+    <section id={id} className={cn(!hasPaddingY && "py-20 sm:py-24", className)}>
       {children}
     </section>
   );

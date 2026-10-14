@@ -122,7 +122,7 @@ export default function Home() {
                 <Card className="group h-full bg-slate-50">
                   <div className="text-[11px] uppercase tracking-wide font-semibold text-sky-600">{p.stage}</div>
                   <Link href={`/products/${p.slug}`} className="mt-2 block font-bold text-lg text-slate-900 leading-snug hover:text-brand transition">{p.name}</Link>
-                  <p className="mt-2 text-sm text-slate-600">{p.valueLine}</p>
+                  {p.valueLine && <p className="mt-2 text-sm text-slate-600">{p.valueLine}</p>}
                   <div className="mt-4 flex items-center justify-between">
                     <span className="rounded-md bg-blue-50 border border-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">{p.capacity}</span>
                     <button onClick={() => openQuote({ product: p.name, capacity: p.capacity })} className="text-sm font-medium text-slate-600 hover:text-brand transition">Enquire →</button>

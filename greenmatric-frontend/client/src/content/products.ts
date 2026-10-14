@@ -1,9 +1,14 @@
 // Static product catalogue (PRD Appendix A + brochure specs). 12 machines.
 // Images served from Supabase Storage (bucket "products", path "<slug>/main.jpg").
 
-export type Stage = "treatment" | "filling" | "labeling" | "packing" | "handling";
+export type Stage = "treatment" | "blowing" | "filling" | "labeling" | "packing" | "handling";
 
 export type Spec = { label: string; value: string };
+
+export type GalleryItem = {
+  title: string;
+  image: string;
+};
 
 export type Product = {
   slug: string;
@@ -15,12 +20,14 @@ export type Product = {
   specs: Spec[];
   industries: string[];
   images: string[]; // Storage paths, e.g. "products/water-rfc/main.jpg"
+  gallery?: GalleryItem[];
   pairsWith?: string[];
   seo: { title: string; description: string };
 };
 
 export const STAGES: { id: Stage; label: string }[] = [
   { id: "treatment", label: "Treatment" },
+  { id: "blowing", label: "Blowing" },
   { id: "filling", label: "Filling" },
   { id: "labeling", label: "Labeling" },
   { id: "packing", label: "Packing" },
@@ -28,6 +35,32 @@ export const STAGES: { id: Stage; label: string }[] = [
 ];
 
 export const PRODUCTS: Product[] = [
+  {
+    slug: "pet-blowing",
+    name: "PET Blowing 2 cavity - 6 cavity (SEMIAUTOMATIC - fully  Automatic blowing )",
+    stage: "blowing",
+    capacity: "2–6 Cavity",
+    valueLine: "",
+    features: [],
+    specs: [],
+    industries: ["Packaged drinking water", "Beverages", "Juice", "Carbonated Soft Drinks"],
+    images: ["products/Blowing/category_imgg.jpeg"],
+    gallery: [
+      {
+        title: "2 cavity Blowing",
+        image: "/products/Blowing/2-cavity.jpeg",
+      },
+      {
+        title: "4 cavity blowing",
+        image: "/products/Blowing/4-cavity.jpeg",
+      },
+    ],
+    pairsWith: ["water-rfc", "conveying", "rotary-bopp-labeler"],
+    seo: {
+      title: "PET Blowing 2 cavity - 6 cavity (SEMIAUTOMATIC - fully  Automatic blowing )",
+      description: "PET Blowing 2 cavity to 6 cavity semi-automatic and fully automatic blowing machines from Greenmatrix Industry Pvt. Ltd.",
+    },
+  },
   {
     slug: "water-rfc",
     name: "Automatic Water RFC (Rinser–Filler–Capper)",

@@ -13,8 +13,8 @@ export const CONTACT = {
   phoneTertiary: "+919470577684",
   whatsapp: "919110992936",
   email: "info@greenmatrix.co.in",
-  address: "Telidih Road, Chas, Bokaro, Jharkhand, India — 827013",
-  address2: "SCO No 221, First Floor, Omaxe World Street, Sector 79, Faridabad, Haryana 121004",
+  address: "Telidih Road, Chas, Bokaro Steel City, Jharkhand – 827013, India",
+  address2: "Omaxe World Street, SCO No. 221, First Floor, Sector 79, Faridabad, Haryana 121101",
   city: "Bokaro",
 };
 

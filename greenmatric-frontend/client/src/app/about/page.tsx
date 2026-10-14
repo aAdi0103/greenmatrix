@@ -21,7 +21,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero eyebrow="About" title={BRAND} />
-      <Section>
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24">
         <Container className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-8 text-slate-600">
             {/* About Us */}

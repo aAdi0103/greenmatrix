@@ -20,7 +20,7 @@ export default function ClientsPage() {
     <>
       <PageHero eyebrow="Clients" title="Trusted where reliability matters"
         subtitle="From PSUs and defence camps to schools and packaged-water brands — our machines run across 14 states." />
-      <Section>
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24">
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {CLIENT_LOGOS.map((c, i) => (

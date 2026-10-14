@@ -14,7 +14,7 @@ export default function SolutionsPage() {
     <>
       <PageHero eyebrow="Solutions" title="Whole-line turnkey bundles"
         subtitle="New to bottling? We design and install the complete line — treatment, filling, labeling and packing." />
-      <Section className="bg-white">
+      <Section className="pt-4 sm:pt-6 pb-20 sm:pb-24 bg-white">
         <Container>
           <div className="grid sm:grid-cols-2 gap-5">
             {SOLUTIONS.map((s) => (
