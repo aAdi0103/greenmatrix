@@ -70,7 +70,7 @@ export const PRESENCE = [
 
 // Assets pulled from existing site (placeholders until real assets arrive).
 export const ASSETS = {
-  logo: "/greenmatrix logo.jpg",
+  logo: "/logo_updated.jpeg",
   hero: "https://greenmatrix.co.in/wp-content/uploads/2024/01/Water-Treatment-Plants.jpg",
 };
 

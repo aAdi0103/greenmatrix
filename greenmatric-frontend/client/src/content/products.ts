@@ -1,7 +1,7 @@
 // Static product catalogue (PRD Appendix A + brochure specs). 12 machines.
 // Images served from Supabase Storage (bucket "products", path "<slug>/main.jpg").
 
-export type Stage = "treatment" | "blowing" | "filling" | "labeling" | "packing" | "handling";
+export type Stage = "treatment" | "blowing" | "filling" | "batch-coding" | "Batch Coding" | "labeling" | "packing" | "handling";
 
 export type Spec = { label: string; value: string };
 
@@ -29,6 +29,7 @@ export const STAGES: { id: Stage; label: string }[] = [
   { id: "treatment", label: "Treatment" },
   { id: "blowing", label: "Blowing" },
   { id: "filling", label: "Filling" },
+  { id: "batch-coding", label: "Batch Coding" },
   { id: "labeling", label: "Labeling" },
   { id: "packing", label: "Packing" },
   { id: "handling", label: "Handling" },
@@ -88,6 +89,35 @@ export const PRODUCTS: Product[] = [
     seo: {
       title: "Automatic Water RFC — Rinser Filler Capper (40–400 BPM)",
       description: "PLC-controlled rinser-filler-capper for water and RTD beverages, 40–400 BPM, bottom-fill for precise levels and hygienic operation.",
+    },
+  },
+  {
+    slug: "batch-coding-machine",
+    name: "Batch Coding Machine",
+    stage: "batch-coding",
+    capacity: "",
+    valueLine: "",
+    features: [],
+    specs: [],
+    industries: ["Packaged drinking water", "Beverages", "Pharmaceuticals", "Food & FMCG", "Dairy"],
+    images: [
+      "products/Coding_Machine/Laser_jet_Batch_coding_Machine.jpeg",
+      "products/Coding_Machine/INKJET_Batch_coding_Machine.jpeg",
+    ],
+    gallery: [
+      {
+        title: "Laser Jet Batch Coding Machine",
+        image: "/products/Coding_Machine/Laser_jet_Batch_coding_Machine.jpeg",
+      },
+      {
+        title: "Inkjet Batch Coding Machine",
+        image: "/products/Coding_Machine/INKJET_Batch_coding_Machine.jpeg",
+      },
+    ],
+    pairsWith: ["water-rfc", "rotary-bopp-labeler", "shrink-wrapping", "conveying"],
+    seo: {
+      title: "Batch Coding Machine — Inkjet & Laser Jet Coding",
+      description: "Industrial Batch Coding Machines (Inkjet & Laser Jet) for batch numbers, expiry dates, MRP, and QR codes on bottles and packaging.",
     },
   },
   {

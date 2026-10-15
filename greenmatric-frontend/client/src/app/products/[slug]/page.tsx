@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PRODUCTS, getProduct } from "@/content/products";
+import { PRODUCTS, getProduct, STAGES } from "@/content/products";
 import { Container } from "@/components/ui";
 import { EnquireButton } from "@/components/EnquireButton";
 import { storageUrl } from "@/lib/storage";
@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="mt-6 grid lg:grid-cols-3 gap-10">
           {/* Main */}
           <div className="lg:col-span-2">
-            <div className="text-xs uppercase tracking-[0.2em] font-semibold text-brand">{p.stage}</div>
+            <div className="text-xs uppercase tracking-[0.2em] font-semibold text-brand">{STAGES.find((s) => s.id === p.stage)?.label ?? p.stage}</div>
             <h1 className="mt-2 text-3xl sm:text-4xl font-black tracking-tight text-slate-900">{p.name}</h1>
             {p.valueLine && <p className="mt-4 text-lg text-slate-600">{p.valueLine}</p>}
 
@@ -128,7 +128,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="mt-4 grid sm:grid-cols-3 gap-4">
                   {related.map((r) => r && (
                     <Link key={r.slug} href={`/products/${r.slug}`} className="rounded-xl border border-[#BCD5F5] bg-slate-50 shadow-xs p-4 hover:border-[#6FA5E6] hover:shadow-md transition">
-                      <div className="text-[11px] uppercase font-semibold text-sky-600">{r.stage}</div>
+                      <div className="text-[11px] uppercase font-semibold text-sky-600">{STAGES.find((s) => s.id === r.stage)?.label ?? r.stage}</div>
                       <div className="mt-1 font-semibold text-sm leading-snug text-slate-900">{r.name}</div>
                     </Link>
                   ))}
@@ -140,9 +140,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {/* Sticky enquire */}
           <aside className="lg:col-span-1">
             <div className="lg:sticky lg:top-24 rounded-2xl border border-[#BCD5F5] bg-slate-50 p-6 shadow-md hover:border-[#6FA5E6] transition-all">
-              <div className="text-sm font-medium text-slate-500">Capacity</div>
-              <div className="text-2xl font-black text-brand">{p.capacity}</div>
-              <h3 className="mt-5 font-bold text-slate-900">Enquire about this machine</h3>
+              {p.capacity ? (
+                <>
+                  <div className="text-sm font-medium text-slate-500">Capacity</div>
+                  <div className="text-2xl font-black text-brand">{p.capacity}</div>
+                </>
+              ) : null}
+              <h3 className={p.capacity ? "mt-5 font-bold text-slate-900" : "font-bold text-slate-900"}>Enquire about this machine</h3>
               <p className="mt-1 text-sm text-slate-600">Get a quote with specs and lead time. We reply within 24 hours.</p>
               <div className="mt-4 flex flex-col gap-2">
                 <EnquireButton product={p.name} capacity={p.capacity}>Enquire now</EnquireButton>

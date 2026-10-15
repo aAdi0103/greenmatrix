@@ -13,8 +13,8 @@ export function Header() {
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#172749]/95 border-b border-[#0e1930] shadow-sm">
       <div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="h-10 w-10 shrink-0 rounded-lg overflow-hidden shadow-sm ring-1 ring-white/20">
-            <BrandLogo className="h-full w-full object-cover" />
+          <div className="h-10 w-14 shrink-0 rounded-lg overflow-hidden shadow-sm ring-1 ring-white/20 bg-white flex items-center justify-center p-1">
+            <BrandLogo />
           </div>
           <span className="font-bold tracking-tight text-base sm:text-lg text-white">{BRAND}</span>
         </Link>

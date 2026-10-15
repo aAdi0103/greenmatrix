@@ -45,8 +45,8 @@ export function Footer() {
           {/* Column 1: Brand & Statement */}
           <div className="space-y-4 max-w-sm lg:w-[32%]">
             <div className="flex items-center gap-2.5">
-              <div className="h-10 w-10 shrink-0 rounded-lg overflow-hidden shadow-sm ring-1 ring-white/20">
-                <BrandLogo className="h-full w-full object-cover" />
+              <div className="h-10 w-14 shrink-0 rounded-lg overflow-hidden shadow-sm ring-1 ring-white/20 bg-white flex items-center justify-center p-1">
+                <BrandLogo />
               </div>
               <span className="font-extrabold text-base tracking-wide text-white">
                 Greenmatrix Industry Pvt. Ltd.

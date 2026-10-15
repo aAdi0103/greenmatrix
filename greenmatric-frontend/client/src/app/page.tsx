@@ -107,7 +107,7 @@ export default function Home() {
       {/* Products */}
       <Section className="bg-white">
         <Container>
-          <SectionHeading title="Machines for every stage of the line" subtitle="Production-grade machines for treatment, filling, labeling, packing and handling — filter by line stage." />
+          <SectionHeading title="Machines for every stage of the line" subtitle="Production-grade machines for treatment, filling, batch coding, labeling, packing and handling — filter by line stage." />
           <div className="mt-8 flex flex-wrap gap-2">
             {[{ id: "all", label: "All" }, ...STAGES].map((s) => (
               <button key={s.id} onClick={() => setStage(s.id as Stage | "all")}
@@ -120,11 +120,13 @@ export default function Home() {
             {shown.map((p, i) => (
               <Reveal key={p.slug} i={i}>
                 <Card className="group h-full bg-slate-50">
-                  <div className="text-[11px] uppercase tracking-wide font-semibold text-sky-600">{p.stage}</div>
+                  <div className="text-[11px] uppercase tracking-wide font-semibold text-sky-600">{STAGES.find((s) => s.id === p.stage)?.label ?? p.stage}</div>
                   <Link href={`/products/${p.slug}`} className="mt-2 block font-bold text-lg text-slate-900 leading-snug hover:text-brand transition">{p.name}</Link>
                   {p.valueLine && <p className="mt-2 text-sm text-slate-600">{p.valueLine}</p>}
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="rounded-md bg-blue-50 border border-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">{p.capacity}</span>
+                    {p.capacity ? (
+                      <span className="rounded-md bg-blue-50 border border-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">{p.capacity}</span>
+                    ) : <span />}
                     <button onClick={() => openQuote({ product: p.name, capacity: p.capacity })} className="text-sm font-medium text-slate-600 hover:text-brand transition">Enquire →</button>
                   </div>
                 </Card>
