@@ -53,13 +53,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {p.valueLine && <p className="mt-4 text-lg text-slate-600">{p.valueLine}</p>}
 
             {p.gallery && p.gallery.length > 0 ? (
-              <div className="mt-8 grid sm:grid-cols-2 gap-6">
+              <div className="mt-8 grid sm:grid-cols-2 gap-6 items-stretch">
                 {p.gallery.map((item) => (
                   <div
                     key={item.title}
-                    className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-400 transition-all flex flex-col items-center"
+                    className="group rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all flex flex-col"
                   >
-                    <div className="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center p-3">
+                    <div className="relative w-full h-72 sm:h-80 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center p-4">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.image}
@@ -67,8 +67,42 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                         className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="mt-4 text-center">
-                      <h3 className="font-bold text-lg text-slate-900">{item.title}</h3>
+                    <div className="mt-5 flex-1 flex flex-col">
+                      <h3 className="font-bold text-xl text-slate-900">{item.title}</h3>
+
+                      {item.features && item.features.length > 0 && (
+                        <div className="mt-4">
+                          <h4 className="text-xs uppercase tracking-wider font-bold text-sky-600">Key Features</h4>
+                          <ul className="mt-2.5 space-y-2 text-sm text-slate-700">
+                            {item.features.map((feat) => (
+                              <li key={feat} className="flex items-start gap-2">
+                                <span className="text-blue-600 font-bold shrink-0 leading-5">▸</span>
+                                <span className="leading-5">{feat}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {item.specs && item.specs.length > 0 && (
+                        <div className="mt-5 pt-4 border-t border-slate-100">
+                          <h4 className="text-xs uppercase tracking-wider font-bold text-slate-500 mb-2.5">Specifications</h4>
+                          <div className="rounded-xl border border-[#BCD5F5] bg-slate-50/70 p-3 text-xs space-y-2">
+                            {item.specs.map((s) => (
+                              <div key={s.label} className="flex justify-between items-baseline gap-3 border-b border-slate-100/80 last:border-0 pb-1.5 last:pb-0">
+                                <span className="font-medium text-slate-700">{s.label}</span>
+                                <span className="text-slate-900 font-semibold text-right">{s.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="mt-6 pt-4 border-t border-slate-100 flex-1 flex items-end">
+                        <EnquireButton product={`${p.name} - ${item.title}`} variant="outline" className="w-full text-xs py-2.5">
+                          Enquire for this model
+                        </EnquireButton>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -80,7 +114,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
-            {p.features.length > 0 && (
+            {p.features.length > 0 && (!p.gallery || !p.gallery.some((g) => g.features && g.features.length > 0)) && (
               <section className="mt-10">
                 <h2 className="text-xl font-bold text-slate-900">Key features</h2>
                 <ul className="mt-4 grid sm:grid-cols-2 gap-3">

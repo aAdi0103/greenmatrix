@@ -18,7 +18,10 @@ const STATS = [
 // Real Greenmatrix machine photos for the hero (from Supabase Storage).
 const HERO_MAIN = storageUrl("products/water-rfc/main.jpg");
 const HERO_THUMBS = ["water-purification", "rotary-bopp-labeler", "shrink-wrapping"].map(
-  (s) => ({ slug: s, url: storageUrl(`products/${s}/main.jpg`) }),
+  (s) => {
+    const prod = PRODUCTS.find((p) => p.slug === s);
+    return { slug: s, url: storageUrl(prod?.images[0] ?? `products/${s}/main.jpg`) };
+  },
 );
 
 export default function Home() {

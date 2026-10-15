@@ -57,6 +57,7 @@ export const CLIENT_LOGOS: ClientItem[] = [
   { name: "Buddhaqua", logo: "/client_image/buddhaqua.jpeg" },
   { name: "Goodsoul", logo: "/client_image/goodsoul.jpeg" },
   { name: "Huntwater", logo: "/client_image/huntwater.jpeg" },
+  { name: "Extra clear", logo: "/client_image/Extra_clear.jpeg" },
 ];
 
 export const CLIENTS = CLIENT_LOGOS.map((c) => c.name);

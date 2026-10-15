@@ -8,6 +8,8 @@ export type Spec = { label: string; value: string };
 export type GalleryItem = {
   title: string;
   image: string;
+  features?: string[];
+  specs?: Spec[];
 };
 
 export type Product = {
@@ -40,10 +42,22 @@ export const PRODUCTS: Product[] = [
     slug: "pet-blowing",
     name: "PET Blowing 2 cavity - 6 cavity (SEMIAUTOMATIC - fully  Automatic blowing )",
     stage: "blowing",
-    capacity: "2–6 Cavity",
-    valueLine: "",
-    features: [],
-    specs: [],
+    capacity: "1,000–12,000 BPH (2–6 Cavity)",
+    valueLine: "High-efficiency semi-automatic and fully automatic PET blow moulding machines (2 to 6 cavity) producing 1,000 to 12,000 BPH from preform to bottle with low electrical consumption.",
+    features: [
+      "Cavity: 2-cavity to 6-cavity",
+      "Production Capacity: 1,000 BPH to 12,000 BPH",
+      "Machine Type: Semi-automatic / Automatic / Fully Automatic / Hand-feed Machine",
+      "Index Model: Low electrical consumption",
+      "Clamping System: TLC-based / Sensor-based / Pneumatic clamping system",
+      "Incremental Heater Setting: 1% to 99%",
+    ],
+    specs: [
+      { label: "Capacity", value: "1,000–12,000 BPH" },
+      { label: "Control System", value: "PLC + Color Touchscreen" },
+      { label: "Construction", value: "MS (Mild Steel)" },
+      { label: "Product", value: "Preform to Bottle" },
+    ],
     industries: ["Packaged drinking water", "Beverages", "Juice", "Carbonated Soft Drinks"],
     images: ["products/Blowing/category_imgg.jpeg"],
     gallery: [
@@ -95,29 +109,74 @@ export const PRODUCTS: Product[] = [
     slug: "batch-coding-machine",
     name: "Batch Coding Machine",
     stage: "batch-coding",
-    capacity: "",
-    valueLine: "",
-    features: [],
-    specs: [],
-    industries: ["Packaged drinking water", "Beverages", "Pharmaceuticals", "Food & FMCG", "Dairy"],
+    capacity: "High Speed",
+    valueLine: "Industrial Inkjet and Laser Batch Coding Machines for printing batch numbers, MRP, manufacturing and expiry dates on bottles and industrial packaging.",
+    features: [
+      "Intelligent cartridge system with innovative nozzle technology (Inkjet)",
+      "Permanent, high-speed marking with ink-free technology (Laser)",
+      "Excellent stability, low maintenance, and high-contrast print quality",
+      "Prints batch number, MRP, manufacturing date, expiry date, and real-time stamps",
+      "Robust IP55-rated stainless steel housing for industrial bottling environments",
+      "Ideal for PET bottles, packaged drinking water, and industrial packaging",
+    ],
+    specs: [
+      { label: "Technology Options", value: "Continuous Inkjet (CIJ) & Laser Jet Coding" },
+      { label: "Housing", value: "IP55-rated stainless steel" },
+      { label: "Operating Temperature", value: "0°C–45°C" },
+      { label: "Ink / Solvent", value: "Ink and makeup cartridges (Inkjet) / Ink-free (Laser)" },
+      { label: "Printing Capabilities", value: "Batch number, MRP, manufacturing date, expiry date, time" },
+      { label: "Applications", value: "PET bottles, packaged drinking water, industrial packaging" },
+    ],
+    industries: [
+      "PET bottles",
+      "Packaged drinking water",
+      "Industrial packaging",
+      "Beverages",
+      "Pharmaceuticals",
+      "Food & FMCG",
+      "Dairy",
+    ],
     images: [
-      "products/Coding_Machine/Laser_jet_Batch_coding_Machine.jpeg",
       "products/Coding_Machine/INKJET_Batch_coding_Machine.jpeg",
+      "products/Coding_Machine/Laser_jet_Batch_coding_Machine.jpeg",
     ],
     gallery: [
       {
-        title: "Laser Jet Batch Coding Machine",
-        image: "/products/Coding_Machine/Laser_jet_Batch_coding_Machine.jpeg",
-      },
-      {
         title: "Inkjet Batch Coding Machine",
         image: "/products/Coding_Machine/INKJET_Batch_coding_Machine.jpeg",
+        features: [
+          "Intelligent cartridge system",
+          "Excellent stability and print quality",
+          "Innovative nozzle technology",
+          "Prints batch number, MRP, manufacturing date, expiry date, and time",
+        ],
+        specs: [
+          { label: "Housing", value: "IP55-rated stainless steel" },
+          { label: "Temperature", value: "0°C–45°C" },
+          { label: "Ink/Solvent", value: "Ink and makeup cartridges" },
+        ],
+      },
+      {
+        title: "Laser Batch Coding Machine",
+        image: "/products/Coding_Machine/Laser_jet_Batch_coding_Machine.jpeg",
+        features: [
+          "Permanent, high-speed marking",
+          "Ink-free technology",
+          "Low maintenance",
+          "Prints batch number, MRP, manufacturing date, and expiry date",
+        ],
+        specs: [
+          { label: "Marking Technology", value: "Laser (Ink-free)" },
+          { label: "Marking Speed", value: "Permanent, high-speed marking" },
+          { label: "Maintenance", value: "Low maintenance" },
+          { label: "Printed Data", value: "Batch number, MRP, mfg date, exp date" },
+        ],
       },
     ],
     pairsWith: ["water-rfc", "rotary-bopp-labeler", "shrink-wrapping", "conveying"],
     seo: {
       title: "Batch Coding Machine — Inkjet & Laser Jet Coding",
-      description: "Industrial Batch Coding Machines (Inkjet & Laser Jet) for batch numbers, expiry dates, MRP, and QR codes on bottles and packaging.",
+      description: "Industrial Inkjet and Laser Batch Coding Machines for batch numbers, MRP, manufacturing date, expiry date on PET bottles and industrial packaging.",
     },
   },
   {
@@ -284,7 +343,7 @@ export const PRODUCTS: Product[] = [
       { label: "Includes", value: "CIP, ozonator, UV sterilizer" },
     ],
     industries: ["Packaged water", "Soft drinks", "Pharma", "Institutions"],
-    images: [],
+    images: ["products/water-purification/WaterPurification.jpeg"],
     pairsWith: ["water-rfc"],
     seo: {
       title: "Water Purification System — 1,000–50,000 LPH",
