@@ -389,7 +389,7 @@ export const SOLUTIONS = [
     slug: "water-plant",
     name: "Mineral Water Plant",
     desc: "Complete turnkey packaged drinking water line — treatment to shrink-wrap.",
-    machines: ["water-purification", "water-rfc", "rotary-bopp-labeler", "shrink-wrapping", "conveying"],
+    machines: ["water-purification", "pet-blowing", "water-rfc", "batch-coding-machine", "rotary-bopp-labeler", "shrink-wrapping", "conveying"],
   },
   {
     slug: "csd-line",
