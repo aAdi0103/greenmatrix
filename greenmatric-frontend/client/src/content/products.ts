@@ -69,6 +69,10 @@ export const PRODUCTS: Product[] = [
         title: "4 cavity blowing",
         image: "/products/Blowing/4-cavity.jpeg",
       },
+      {
+        title: "Fully Automatic Blow Moulding Machine",
+        image: "/products/pet-blowing/main.jpg",
+      },
     ],
     pairsWith: ["water-rfc", "conveying", "rotary-bopp-labeler"],
     seo: {
